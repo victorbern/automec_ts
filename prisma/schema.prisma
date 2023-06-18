@@ -7,7 +7,7 @@ datasource db {
   url      = "mysql://root:@localhost:3306/automec_v7"
 }
 
-model cliente {
+model Cliente {
   idCliente       Int            @id @default(autoincrement())
   nomeCliente     String?        @db.VarChar(60)
   cpfCnpj         String?        @unique(map: "cpfCnpj") @db.VarChar(18)
@@ -20,43 +20,43 @@ model cliente {
   cidade          String?        @db.VarChar(60)
   uf              String?        @db.VarChar(2)
   complemento     String?        @db.VarChar(60)
-  ordemservico    ordemservico[]
-  veiculo         veiculo[]
+  ordemservico    OrdemServico[]
+  veiculo         Veiculo[]
 }
 
-model detalhepagamento {
+model DetalhePagamento {
   idDetalhePagamento Int        @id @default(autoincrement())
   idOrdemServico     Int?
   idPagamento        Int?
-  pagamento          pagamento? @relation(fields: [idPagamento], references: [idPagamento], onDelete: Restrict, onUpdate: Restrict, map: "detalhepagamento_ibfk_1")
+  pagamento          Pagamento? @relation(fields: [idPagamento], references: [idPagamento], onDelete: Restrict, onUpdate: Restrict, map: "detalhepagamento_ibfk_1")
 
   @@index([idPagamento], map: "idPagamento")
 }
 
-model executafuncao {
+model ExecutaFuncao {
   idOSDetalhes  Int
   idFuncionario Int
   idServico     Int
   observacao    String?     @db.VarChar(45)
   quantidade    Int?
-  osdetalhes    osdetalhes  @relation(fields: [idOSDetalhes], references: [idOSDetalhes], onUpdate: Restrict, map: "executafuncao_ibfk_1")
-  funcionario   funcionario @relation(fields: [idFuncionario], references: [idFuncionario], onUpdate: Restrict, map: "executafuncao_ibfk_2")
-  servico       servico     @relation(fields: [idServico], references: [idServico], onUpdate: Restrict, map: "executafuncao_ibfk_3")
+  osdetalhes    OSDetalhes  @relation(fields: [idOSDetalhes], references: [idOSDetalhes], onUpdate: Restrict, map: "executafuncao_ibfk_1")
+  funcionario   Funcionario @relation(fields: [idFuncionario], references: [idFuncionario], onUpdate: Restrict, map: "executafuncao_ibfk_2")
+  servico       Servico     @relation(fields: [idServico], references: [idServico], onUpdate: Restrict, map: "executafuncao_ibfk_3")
 
   @@id([idOSDetalhes, idFuncionario, idServico])
   @@index([idFuncionario], map: "idFuncionario")
   @@index([idServico], map: "idServico")
 }
 
-model funcionario {
+model Funcionario {
   idFuncionario   Int             @id @default(autoincrement())
   nomeFuncionario String?         @db.VarChar(60)
   isAtivo         String?         @db.VarChar(3)
   funcao          String?         @db.VarChar(45)
-  executafuncao   executafuncao[]
+  executafuncao   ExecutaFuncao[]
 }
 
-model ordemservico {
+model OrdemServico {
   idOrdemServico Int          @id @default(autoincrement())
   total          Float?       @db.Float
   km             Int?
@@ -64,78 +64,78 @@ model ordemservico {
   isPaga         Boolean?     @default(false)
   placaVeiculo   String?      @db.VarChar(8)
   idCliente      Int?
-  cliente        cliente?     @relation(fields: [idCliente], references: [idCliente], onDelete: Restrict, onUpdate: Restrict, map: "ordemservico_ibfk_1")
-  osdetalhes     osdetalhes[]
+  cliente        Cliente?     @relation(fields: [idCliente], references: [idCliente], onDelete: Restrict, onUpdate: Restrict, map: "ordemservico_ibfk_1")
+  osdetalhes     OSDetalhes[]
 
   @@index([idCliente], map: "idCliente")
 }
 
-model osdetalhes {
+model OSDetalhes {
   idOSDetalhes           Int                      @id @default(autoincrement())
   dataOS                 DateTime?                @db.DateTime(0)
   idOrdemServico         Int?
-  executafuncao          executafuncao[]
-  ordemservico           ordemservico?            @relation(fields: [idOrdemServico], references: [idOrdemServico], onDelete: Restrict, onUpdate: Restrict, map: "osdetalhes_ibfk_1")
-  produto_has_osdetalhes produto_has_osdetalhes[]
+  executafuncao          ExecutaFuncao[]
+  ordemservico           OrdemServico?            @relation(fields: [idOrdemServico], references: [idOrdemServico], onDelete: Restrict, onUpdate: Restrict, map: "osdetalhes_ibfk_1")
+  produto_has_osdetalhes Produto_has_OSDetalhes[]
 
   @@index([idOrdemServico], map: "idOrdemServico")
 }
 
-model pagamento {
+model Pagamento {
   idPagamento      Int                @id @default(autoincrement())
   dataHora         DateTime?          @db.DateTime(0)
   subtotal         Float?             @db.Float
   total            Float?             @db.Float
   desconto         Float?             @db.Float
   formaPagamento   String?            @db.VarChar(45)
-  detalhepagamento detalhepagamento[]
-  vendadireta      vendadireta[]
+  detalhepagamento DetalhePagamento[]
+  vendadireta      VendaDireta[]
 }
 
-model produto {
+model Produto {
   codigoBarras            String                    @id @db.VarChar(45)
   descricao               String?                   @db.VarChar(45)
   valorCusto              Float?                    @db.Float
   quantidadeEstoque       Int?
   precoVenda              Float?                    @db.Float
-  produto_has_osdetalhes  produto_has_osdetalhes[]
-  produto_has_vendadireta produto_has_vendadireta[]
+  produto_has_osdetalhes  Produto_has_OSDetalhes[]
+  produto_has_vendadireta Produto_has_VendaDireta[]
 }
 
-model produto_has_osdetalhes {
+model Produto_has_OSDetalhes {
   idOSDetalhes      Int
   codigoBarras      String     @db.VarChar(45)
   quantidadeVendida Int?
   precoTotal        Float?     @db.Float
   precoUnitario     Float?     @db.Float
-  osdetalhes        osdetalhes @relation(fields: [idOSDetalhes], references: [idOSDetalhes], onUpdate: Restrict, map: "produto_has_osdetalhes_ibfk_1")
-  produto           produto    @relation(fields: [codigoBarras], references: [codigoBarras], onUpdate: Restrict, map: "produto_has_osdetalhes_ibfk_2")
+  osdetalhes        OSDetalhes @relation(fields: [idOSDetalhes], references: [idOSDetalhes], onUpdate: Restrict, map: "produto_has_osdetalhes_ibfk_1")
+  produto           Produto    @relation(fields: [codigoBarras], references: [codigoBarras], onUpdate: Restrict, map: "produto_has_osdetalhes_ibfk_2")
 
   @@id([idOSDetalhes, codigoBarras])
   @@index([codigoBarras], map: "codigoBarras")
 }
 
-model produto_has_vendadireta {
+model Produto_has_VendaDireta {
   codigoBarras      String      @db.VarChar(45)
   idVendaDireta     Int
   quantidadeVendida Int?
   precoTotal        Float?      @db.Float
   precoUnitario     Float?      @db.Float
-  produto           produto     @relation(fields: [codigoBarras], references: [codigoBarras], onUpdate: Restrict, map: "produto_has_vendadireta_ibfk_1")
-  vendadireta       vendadireta @relation(fields: [idVendaDireta], references: [idVendaDireta], onUpdate: Restrict, map: "produto_has_vendadireta_ibfk_2")
+  produto           Produto     @relation(fields: [codigoBarras], references: [codigoBarras], onUpdate: Restrict, map: "produto_has_vendadireta_ibfk_1")
+  vendadireta       VendaDireta @relation(fields: [idVendaDireta], references: [idVendaDireta], onUpdate: Restrict, map: "produto_has_vendadireta_ibfk_2")
 
   @@id([codigoBarras, idVendaDireta])
   @@index([idVendaDireta], map: "idVendaDireta")
 }
 
-model servico {
+model Servico {
   idServico        Int             @id @default(autoincrement())
   descricaoServico String?         @db.VarChar(60)
   precoServico     String?         @db.VarChar(45)
-  executafuncao    executafuncao[]
+  executafuncao    ExecutaFuncao[]
 }
 
-model veiculo {
+model Veiculo {
   placaVeiculo   String   @id @db.VarChar(8)
   marca          String?  @db.VarChar(45)
   modelo         String?  @db.VarChar(45)
@@ -143,18 +143,18 @@ model veiculo {
   capacidadeOleo Float?
   cor            String?  @db.VarChar(45)
   idCliente      Int?
-  cliente        cliente? @relation(fields: [idCliente], references: [idCliente], onDelete: Restrict, onUpdate: Restrict, map: "veiculo_ibfk_1")
+  cliente        Cliente? @relation(fields: [idCliente], references: [idCliente], onDelete: Restrict, onUpdate: Restrict, map: "veiculo_ibfk_1")
 
   @@index([idCliente], map: "idCliente")
 }
 
-model vendadireta {
+model VendaDireta {
   idVendaDireta           Int                       @id @default(autoincrement())
   idPagamento             Int?
   total                   Float?                    @db.Float
   dataHora                DateTime?                 @db.DateTime(0)
-  produto_has_vendadireta produto_has_vendadireta[]
-  pagamento               pagamento?                @relation(fields: [idPagamento], references: [idPagamento], onDelete: Restrict, onUpdate: Restrict, map: "vendadireta_ibfk_1")
+  produto_has_vendadireta Produto_has_VendaDireta[]
+  pagamento               Pagamento?                @relation(fields: [idPagamento], references: [idPagamento], onDelete: Restrict, onUpdate: Restrict, map: "vendadireta_ibfk_1")
 
   @@index([idPagamento], map: "idPagamento")
 }
