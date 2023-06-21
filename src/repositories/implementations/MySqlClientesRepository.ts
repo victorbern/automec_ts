@@ -44,4 +44,12 @@ export class MySqlClientesRepository implements IClientesRepository {
             data: cliente,
         });
     }
+
+    async delete(idCliente: number): Promise<void> {
+        await this.prisma.cliente.delete({
+            where: {
+                idCliente: idCliente
+            }
+        })
+    }
 }

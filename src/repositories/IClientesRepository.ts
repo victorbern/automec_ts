@@ -6,4 +6,5 @@ export interface IClientesRepository {
     findByCpfCnpj(cpfCnpj: string): Promise<Cliente>;
     findById(idCliente: number): Promise<Cliente>;
     update(cliente: Cliente): Promise<void>;
+    delete(idCliente: number): Promise<void>;
 }
