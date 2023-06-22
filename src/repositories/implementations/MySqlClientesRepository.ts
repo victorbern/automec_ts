@@ -4,7 +4,11 @@ import { PrismaClient } from '@prisma/client';
 
 export class MySqlClientesRepository implements IClientesRepository {
     
-    private prisma = new PrismaClient()
+    private prisma = new PrismaClient({
+        // log: [
+        //     "query", "info", "warn", "error"
+        // ]
+    })
     
     async findByCpfCnpj(cpfCnpj: string): Promise<Cliente> {
         const cliente: Cliente = await this.prisma.cliente.findUnique({
@@ -31,7 +35,7 @@ export class MySqlClientesRepository implements IClientesRepository {
     }
 
     async save(cliente: Cliente): Promise<void> {
-        this.prisma.cliente.create({
+        await this.prisma.cliente.create({
             data: cliente
         })
     }
