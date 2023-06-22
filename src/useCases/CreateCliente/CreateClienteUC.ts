@@ -14,7 +14,6 @@ export class CreateClienteUC {
             }
 
             const clienteAlreadyExists = await this.clientesRepository.findByCpfCnpj(data.cpfCnpj);
-
             if (clienteAlreadyExists != null) {
                 throw new Error('The CPF/CNPJ already exists');
             }
