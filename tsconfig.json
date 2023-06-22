@@ -6,6 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "sourceMap": true,
   }
 }
