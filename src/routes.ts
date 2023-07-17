@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { createClienteController } from "./useCases/CreateCliente";
-import { findAllClientesController } from "./useCases/FindAllClientes";
-import { findClienteController } from "./useCases/FindCliente";
-import { setClienteController } from "./useCases/SetCliente";
-import { delClienteController } from "./useCases/DelCliente";
+import { createClienteController } from "./useCases/clientes/CreateCliente";
+import { findAllClientesController } from "./useCases/clientes/FindAllClientes";
+import { findClienteController } from "./useCases/clientes/FindCliente";
+import { setClienteController } from "./useCases/clientes/SetCliente";
+import { delClienteController } from "./useCases/clientes/DelCliente";
+import { createVeiculoController } from "./useCases/veiculos/CreateVeiculo";
 
 const router = Router();
 
@@ -25,6 +26,10 @@ router.put('/cliente/:id', async (request, response) => {
 
 router.delete('/cliente/:id', async (request, response) => {
     return delClienteController.handle(request, response);
+})
+
+router.post('/veiculo', async (request, response) => {
+    return createVeiculoController.handle(request, response);
 })
 
 export { router }
