@@ -14,6 +14,11 @@ export class MySqlVeiculosRepository implements IVeiculosRepository {
         return veiculo;
     }
 
+    async findAll(): Promise<Veiculo[]> {
+        const veiculos: Array<Veiculo> = await this.prisma.veiculo.findMany();
+        return veiculos;
+    }
+
     async save(veiculo: Veiculo): Promise<void> {
         await this.prisma.veiculo.create({
             data: veiculo

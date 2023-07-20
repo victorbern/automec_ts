@@ -5,6 +5,7 @@ import { findClienteController } from "./useCases/clientes/FindCliente";
 import { setClienteController } from "./useCases/clientes/SetCliente";
 import { delClienteController } from "./useCases/clientes/DelCliente";
 import { createVeiculoController } from "./useCases/veiculos/CreateVeiculo";
+import { findAllVeiculosController } from "./useCases/veiculos/FindAllVeiculos";
 
 const router = Router();
 
@@ -30,6 +31,10 @@ router.delete('/cliente/:id', async (request, response) => {
 
 router.post('/veiculo', async (request, response) => {
     return createVeiculoController.handle(request, response);
+})
+
+router.get('/veiculos', async (request, response) => {
+    return findAllVeiculosController.handle(request, response);
 })
 
 export { router }
