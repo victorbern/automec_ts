@@ -1,3 +1,4 @@
+import { AppError } from "../../../errors/AppError";
 import { IClientesRepository } from "../../../repositories/IClientesRepository";
 import { IFindClienteRequestDTO, IFindClienteResponseDTO } from "./FindClienteDTO";
 

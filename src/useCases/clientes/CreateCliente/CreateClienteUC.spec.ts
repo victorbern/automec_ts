@@ -1,7 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { CreateClienteUC } from "./CreateClienteUC";
-import { Cliente } from "../../../entities/Cliente";
-import { MySqlClientesRepository } from "../../../repositories/implementations/MySqlClientesRepository";
 import { InMemoryClientesRepository } from "../../../repositories/in-memory/in-memory-ClientesRepository";
 
 describe('Create Cliente', () => {

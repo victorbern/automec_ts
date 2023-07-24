@@ -2,9 +2,31 @@ import { Cliente } from "../../entities/Cliente";
 import { IClientesRepository } from "../IClientesRepository";
 
 export class InMemoryClientesRepository implements IClientesRepository {
-    public items: Cliente[] = [];
+    public items: Cliente[] = [
+        {
+            idCliente: 1,
+            nomeCliente: "Victor",
+            cpfCnpj: "475.283.293-21",
+            celularCliente: "11953014839",
+            telefoneCliente: "40364930",
+            cep: "12970-000",
+            endereco: "Rua 1",
+            numero: "44",
+            bairro: "Jd San Marino",
+            cidade: "Piracaia",
+            uf: "SP",
+            complemento: ""
+        }
+    ];
 
     async save(cliente: Cliente): Promise<void> {
+        let id = 1;
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idCliente>id) {
+                id++;
+            }
+        }
+        cliente.idCliente = id+1;
         this.items.push(cliente);
     }
     async findAll(): Promise<Cliente[]> {
@@ -26,7 +48,7 @@ export class InMemoryClientesRepository implements IClientesRepository {
                 return cliente;
             }
         }
-        return null;
+        return Promise.resolve(null);
     }
     async update(cliente: Cliente): Promise<void> {
         
