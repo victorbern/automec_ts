@@ -7,6 +7,7 @@ import { delClienteController } from "./useCases/clientes/DelCliente";
 import { createVeiculoController } from "./useCases/veiculos/CreateVeiculo";
 import { findAllVeiculosController } from "./useCases/veiculos/FindAllVeiculos";
 import { findVeiculoController } from "./useCases/veiculos/FindVeiculo";
+import { setVeiculoController } from "./useCases/veiculos/SetVeiculo";
 
 const router = Router();
 
@@ -40,6 +41,10 @@ router.get('/veiculos', async (request, response) => {
 
 router.get('/veiculo/:placaVeiculo', async (request, response) => {
     return findVeiculoController.handle(request, response);
+})
+
+router.put('/veiculo/:placaVeiculo', async (request, response) => {
+    return setVeiculoController.handle(request, response);
 })
 
 export { router }

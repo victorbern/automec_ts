@@ -1,5 +1,5 @@
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
-import { findClienteUC } from "../../FindCliente";
+import { findClienteUC } from "../../clientes/FindCliente";
 import { IFindVeiculoRequestDTO, IFindVeiculoResponseDTO } from "./FindVeiculoDTO";
 
 export class FindVeiculoUC {

@@ -24,4 +24,13 @@ export class MySqlVeiculosRepository implements IVeiculosRepository {
             data: veiculo
         });
     }
+
+    async update(veiculo: Veiculo): Promise<void> {
+        await this.prisma.veiculo.update({
+            where: {
+                placaVeiculo: veiculo.placaVeiculo
+            },
+            data: veiculo,
+        });
+    }
 }

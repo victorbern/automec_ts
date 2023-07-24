@@ -1,7 +1,6 @@
-import { Veiculo } from "@prisma/client";
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
-import { findClienteUC } from "../../FindCliente";
 import { IFindAllVeiculosResponseDTO } from "./FindAllVeiculosDTO";
+import { findClienteUC } from "../../clientes/FindCliente";
 
 export class FindAllVeiculosUC {
     constructor(
