@@ -12,12 +12,6 @@ export class SetClienteUC {
             if (!data.idCliente || !data.nomeCliente || !data.cpfCnpj || !data.celularCliente) {
                 throw new Error("Data missing")
             }
-            const clienteExistCpfCnpj = await this.clientesRepository.findByCpfCnpj(data.cpfCnpj);
-            if (clienteExistCpfCnpj != null) {
-                if (clienteExistCpfCnpj.idCliente == data.idCliente) {
-                    throw new Error("The CPF/CNPJ is already associated")
-                }
-            }
             
             const clienteExistId = await this.clientesRepository.findById(data.idCliente);
             if (!clienteExistId) {
