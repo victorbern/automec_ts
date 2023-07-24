@@ -2,6 +2,7 @@ import { Veiculo } from "../../../entities/Veiculo";
 import { AppError } from "../../../errors/AppError";
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
 import { findClienteUC } from "../../clientes/FindCliente/";
+import { findVeiculoUC } from "../FindVeiculo";
 import { ICreateVeiculoRequestDTO } from "./CreateVeiculoDTO";
 
 export class CreateVeiculoUC {
@@ -15,7 +16,7 @@ export class CreateVeiculoUC {
                 throw new AppError('There are missing fields', 400);
             }
 
-            const veiculoAlreadyExists = await this.veiculosRepository.findByPlacaVeiculo(data.placaVeiculo);
+            const veiculoAlreadyExists = await findVeiculoUC.execute({placaVeiculo: data.placaVeiculo});
             if (veiculoAlreadyExists != null) {
                 throw new AppError('The placaVeiculo already exists', 400);
             }
