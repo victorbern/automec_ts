@@ -1,8 +1,4 @@
-export interface IFindClienteRequestDTO {
-    idCliente: number;
-}
-
-export interface IFindClienteResponseDTO {
+export interface IFindAllClientesResponseDTO {
     idCliente: number;
     nomeCliente: string;
     cpfCnpj: string;

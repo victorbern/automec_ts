@@ -1,12 +1,12 @@
 import { IClientesRepository } from "../../../repositories/IClientesRepository";
-import { IFindClienteRequestDTO } from "./FindClienteDTO";
+import { IFindClienteRequestDTO, IFindClienteResponseDTO } from "./FindClienteDTO";
 
 export class FindClienteUC {
     constructor(
         private clientesRepository: IClientesRepository
     ) {}
 
-    async execute(data: IFindClienteRequestDTO) {
+    async execute(data: IFindClienteRequestDTO): Promise<IFindClienteResponseDTO> {
         try {
             const cliente = await this.clientesRepository.findById(data.idCliente);
             return cliente;
