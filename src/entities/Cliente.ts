@@ -1,5 +1,5 @@
 export class Cliente {
-    public readonly idCliente: number;
+    public idCliente: number;
 
     public nomeCliente: string;
     public cpfCnpj: string;
