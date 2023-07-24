@@ -30,7 +30,6 @@ export class CreateVeiculoUC {
             await this.veiculosRepository.save(veiculo);
         } catch (error) {
             if (error instanceof Error) {
-                console.log(error.message);
                 throw error;
             } else {
                 throw new AppError('Unexpected error', 500);
