@@ -1,5 +1,6 @@
-import { PrismaClient, Veiculo } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { IVeiculosRepository } from "../IVeiculosRepository";
+import { Veiculo } from "../../entities/Veiculo";
 
 export class MySqlVeiculosRepository implements IVeiculosRepository {
 
@@ -12,6 +13,15 @@ export class MySqlVeiculosRepository implements IVeiculosRepository {
             }
         })
         return veiculo;
+    }
+
+    async findByIdCliente(idCliente: number): Promise<Veiculo[]> {
+        const veiculos: Veiculo[] = await this.prisma.veiculo.findMany({
+            where: {
+                idCliente: idCliente
+            }
+        })
+        return veiculos;
     }
 
     async findAll(): Promise<Veiculo[]> {
