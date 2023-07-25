@@ -12,7 +12,6 @@ export class SetClienteUC {
             if (!data.idCliente || !data.nomeCliente || !data.cpfCnpj || !data.celularCliente) {
                 throw new Error("Data missing")
             }
-            
             const clienteExistId = await this.clientesRepository.findById(data.idCliente);
             if (!clienteExistId) {
                 throw new Error("Client not found")

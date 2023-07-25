@@ -5,13 +5,21 @@ import { FindClienteUC } from "./FindClienteUC";
 import { Cliente } from "../../../entities/Cliente";
 
 describe("Find Cliente", () => {
-    const mySql = new InMemoryClientesRepository;
-    const createCliente = new CreateClienteUC(mySql)
-    const findCliente = new FindClienteUC(mySql);
+    const mySqlClientes = new InMemoryClientesRepository();
+    const findCliente = new FindClienteUC(mySqlClientes);
 
     it("should be able to find a client", () => {
-        expect(findCliente.execute({
-            idCliente: 1
-        })).resolves
-    })
-})
+        // Busca o cliente com id 1 e compara com o cliente de id 1 que está no banco de dados
+        expect(
+            findCliente.execute({
+                idCliente: 1,
+            })
+        ).resolves.toBe(
+            mySqlClientes.items.find((cliente) => {
+                if (cliente.idCliente === 1) {
+                    return cliente;
+                }
+            })
+        );
+    });
+});

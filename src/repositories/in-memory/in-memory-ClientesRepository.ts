@@ -15,25 +15,25 @@ export class InMemoryClientesRepository implements IClientesRepository {
             bairro: "Jd San Marino",
             cidade: "Piracaia",
             uf: "SP",
-            complemento: ""
-        }
+            complemento: "",
+        },
     ];
 
     async save(cliente: Cliente): Promise<void> {
         let id = 1;
         for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].idCliente>id) {
+            if (this.items[i].idCliente > id) {
                 id++;
             }
         }
-        cliente.idCliente = id+1;
+        cliente.idCliente = id + 1;
         this.items.push(cliente);
     }
     async findAll(): Promise<Cliente[]> {
         return this.items;
     }
     async findByCpfCnpj(cpfCnpj: string): Promise<Cliente> {
-        for (let i=0; i<this.items.length; i++) {
+        for (let i = 0; i < this.items.length; i++) {
             const cliente = this.items[i];
             if (cliente.cpfCnpj === cpfCnpj) {
                 return cliente;
@@ -42,19 +42,39 @@ export class InMemoryClientesRepository implements IClientesRepository {
         return null;
     }
     async findById(idCliente: number): Promise<Cliente> {
-        for (let i=0; i<this.items.length; i++) {
+        for (let i = 0; i < this.items.length; i++) {
             const cliente = this.items[i];
             if (cliente.idCliente === idCliente) {
                 return cliente;
             }
         }
-        return Promise.resolve(null);
+        return null;
     }
     async update(cliente: Cliente): Promise<void> {
-        
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idCliente === cliente.idCliente) {
+                this.items[i] = {
+                    idCliente: cliente.idCliente,
+                    nomeCliente: cliente.nomeCliente,
+                    cpfCnpj: cliente.cpfCnpj,
+                    celularCliente: cliente.celularCliente,
+                    telefoneCliente: cliente.telefoneCliente,
+                    cep: cliente.cep,
+                    endereco: cliente.endereco,
+                    numero: cliente.numero,
+                    bairro: cliente.bairro,
+                    cidade: cliente.cidade,
+                    uf: cliente.uf,
+                    complemento: cliente.complemento,
+                };
+            }
+        }
     }
     async delete(idCliente: number): Promise<void> {
-        throw new Error("Method not implemented.");
+        for (let i=0; i<this.items.length; i++) {
+            if (this.items[i].idCliente === idCliente) {
+                this.items.splice(i, 1)
+            }
+        }
     }
-    
 }
