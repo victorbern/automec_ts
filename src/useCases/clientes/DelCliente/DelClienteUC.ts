@@ -1,3 +1,4 @@
+import { AppError } from "../../../errors/AppError";
 import { IClientesRepository } from "../../../repositories/IClientesRepository";
 import { FindVeiculoByClienteUC } from "../../veiculos/FindVeiculoByCliente/FindVeiculoByClienteUC";
 import { IDelClienteRequestDTO } from "./DelClienteDTO";
@@ -13,12 +14,12 @@ export class DelClienteUC {
             // Verificar se o cliente existe
             const clienteExists = await this.clientesRepository.findById(data.idCliente)
             if (!clienteExists) {
-                throw new Error('Client does not found')
+                throw new AppError('Client does not found', 400)
             }
             
             const hasVeiculo = await this.findVeiculoByCliente.execute({ idCliente: data.idCliente });
             if (hasVeiculo.length > 0) {
-                throw new Error('The client has vehicles in his name')
+                throw new AppError('The client has vehicles in his name', 400)
             }
             await this.clientesRepository.delete(data.idCliente)
         } catch (error) {  

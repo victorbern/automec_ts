@@ -1,4 +1,4 @@
-import { Veiculo } from "@prisma/client";
+import { Veiculo } from "../entities/Veiculo";
 
 export interface IVeiculosRepository {
     save(veiculo: Veiculo): Promise<void>;
@@ -6,4 +6,5 @@ export interface IVeiculosRepository {
     findByPlacaVeiculo(placaVeiculo: string): Promise<Veiculo>;
     findByIdCliente(idCliente: number): Promise<Veiculo[]>;
     update(veiculo: Veiculo): Promise<void>;
+    delete(placaVeiculo: string): Promise<void>;
 }
