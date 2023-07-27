@@ -10,4 +10,11 @@ describe("Find All Clientes", () => {
         // Busca todos os clientes e compara com os dados do banco de dados
         expect(findAllClientes.execute()).resolves.toBe(mySqlClientes.items);
     });
+
+    it("should not be able to find any client", () => {
+        mySqlClientes.items = []
+
+        // Busca todos os clientes (com a base zerada) e verifica se não houve erros
+        expect(findAllClientes.execute()).resolves.toStrictEqual([]);
+    })
 });
