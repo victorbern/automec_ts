@@ -10,9 +10,16 @@ export class FindClienteUC {
     async execute(data: IFindClienteRequestDTO): Promise<IFindClienteResponseDTO> {
         try {
             const cliente = await this.clientesRepository.findById(data.idCliente);
+            if (cliente == null || cliente == undefined) {
+                return null;
+            }
             return cliente;
         } catch (error) {
-            throw new Error("Unexpected Error")
+            if (error instanceof Error) {
+                throw error;
+            } else {
+                throw new AppError("Unexpected error!", 500)
+            }
         }
     }
 }
