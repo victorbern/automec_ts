@@ -43,4 +43,12 @@ export class MySqlVeiculosRepository implements IVeiculosRepository {
             data: veiculo,
         });
     }
+
+    async delete(placaVeiculo: string): Promise<void> {
+        await this.prisma.veiculo.delete({
+            where: {
+                placaVeiculo: placaVeiculo
+            }
+        })
+    }
 }
