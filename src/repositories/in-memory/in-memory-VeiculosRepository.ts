@@ -50,4 +50,12 @@ export class InMemoryVeiculosRepository implements IVeiculosRepository {
             }
         }
     }
+
+    async delete(placaVeiculo: string): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].placaVeiculo === placaVeiculo) {
+                this.items.splice(i, 1);
+            }
+        }
+    }
 } 
