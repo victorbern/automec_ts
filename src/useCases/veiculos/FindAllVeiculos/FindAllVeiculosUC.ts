@@ -1,17 +1,18 @@
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
 import { IFindAllVeiculosResponseDTO } from "./FindAllVeiculosDTO";
-import { findClienteUC } from "../../clientes/FindCliente";
+import { FindClienteUC } from "../../clientes/FindCliente/FindClienteUC";
 
 export class FindAllVeiculosUC {
     constructor(
         private veiculosRepository: IVeiculosRepository,
+        private findCliente: FindClienteUC
     ) {}
 
     async execute(): Promise<IFindAllVeiculosResponseDTO[]> {
         const result = await this.veiculosRepository.findAll();
         const veiculos: IFindAllVeiculosResponseDTO[] = [];
         for (let i=0; i<result.length; i++) {
-            const cliente = await findClienteUC.execute({idCliente: result[i].idCliente})
+            const cliente = await this.findCliente.execute({idCliente: result[i].idCliente})
             veiculos.push({
                 placaVeiculo: result[i].placaVeiculo,
                 marca: result[i].marca,

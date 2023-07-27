@@ -13,13 +13,18 @@ export class InMemoryVeiculosRepository implements IVeiculosRepository {
     }];
 
     async save(veiculo: Veiculo): Promise<void> {
-        throw new Error("Method not implemented.");
+        this.items.push(veiculo);
     }
     async findAll(): Promise<Veiculo[]> {
-        throw new Error("Method not implemented.");
+        return this.items;
     }
     async findByPlacaVeiculo(placaVeiculo: string): Promise<Veiculo> {
-        throw new Error("Method not implemented.");
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].placaVeiculo === placaVeiculo) {
+                return this.items[i];
+            }
+        }
+        return null;
     }
     async findByIdCliente(idCliente: number): Promise<Veiculo[]> {
         const veiculos: Veiculo[] = [];
@@ -31,6 +36,18 @@ export class InMemoryVeiculosRepository implements IVeiculosRepository {
         return veiculos;
     }
     async update(veiculo: Veiculo): Promise<void> {
-        throw new Error("Method not implemented.");
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].placaVeiculo === veiculo.placaVeiculo) {
+                this.items[i] = {
+                    placaVeiculo: veiculo.placaVeiculo,
+                    marca: veiculo.marca,
+                    modelo: veiculo.modelo,
+                    ano: veiculo.ano,
+                    capacidadeOleo: veiculo.capacidadeOleo,
+                    cor: veiculo.cor,
+                    idCliente: veiculo.idCliente
+                }
+            }
+        }
     }
 } 

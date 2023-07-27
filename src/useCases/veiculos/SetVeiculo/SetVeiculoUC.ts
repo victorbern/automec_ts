@@ -1,11 +1,12 @@
 import { Veiculo } from "../../../entities/Veiculo";
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
-import { findClienteUC } from "../../clientes/FindCliente";
+import { FindClienteUC } from "../../clientes/FindCliente/FindClienteUC";
 import { ISetVeiculoRequestDTO } from "./SetVeiculoDTO";
 
 export class SetVeiculoUC {
     constructor(
         private veiculosRepository: IVeiculosRepository,
+        private findCliente: FindClienteUC
     ) {}
 
     async execute(data: ISetVeiculoRequestDTO) {
@@ -19,9 +20,9 @@ export class SetVeiculoUC {
                 throw new Error("Veiculo not found")
             }
 
-            const clienteExistId = await findClienteUC.execute({idCliente: data.idCliente});
+            const clienteExistId = await this.findCliente.execute({idCliente: data.idCliente});
             if (!clienteExistId) {
-                throw new Error("Cliente not found")
+                throw new Error("Client not found")
             }
 
             const veiculo = new Veiculo(data);
