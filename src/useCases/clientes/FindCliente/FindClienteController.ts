@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { FindClienteUC } from "./FindClienteUC";
-import { Cliente } from "../../../entities/Cliente";
 
 export class FindClienteController {
     constructor(
