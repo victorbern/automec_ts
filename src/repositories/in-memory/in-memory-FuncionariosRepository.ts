@@ -7,9 +7,9 @@ export class InMemoryFuncionariosRepository implements IFuncionariosRepository {
             idFuncionario: 1,
             nomeFuncionario: "Andre",
             isAtivo: "true",
-            funcao: "Mecânico"
-        }
-    ]
+            funcao: "Mecânico",
+        },
+    ];
 
     async save(funcionario: Funcionario): Promise<void> {
         let id = 0;
@@ -33,5 +33,18 @@ export class InMemoryFuncionariosRepository implements IFuncionariosRepository {
             }
         }
         return null;
+    }
+
+    async update(funcionario: Funcionario): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idFuncionario === funcionario.idFuncionario) {
+                this.items[i] = {
+                    idFuncionario: funcionario.idFuncionario,
+                    nomeFuncionario: funcionario.nomeFuncionario,
+                    isAtivo: funcionario.isAtivo,
+                    funcao: funcionario.funcao,
+                };
+            }
+        }
     }
 }

@@ -11,6 +11,8 @@ import { setVeiculoController } from "./useCases/veiculos/SetVeiculo";
 import { delVeiculoController } from "./useCases/veiculos/DelVeiculo";
 import { createFuncionarioController } from "./useCases/funcionarios/CreateFuncionario";
 import { findAllFuncionariosController } from "./useCases/funcionarios/FindAllFuncionarios";
+import { findFuncionarioController } from "./useCases/funcionarios/FindFuncionario";
+import { setFuncionarioController } from "./useCases/funcionarios/SetFuncionario";
 
 const router = Router();
 
@@ -60,6 +62,14 @@ router.post('/funcionario', async (request, response) => {
 
 router.get('/funcionarios', async (request, response) => {
     return findAllFuncionariosController.handle(request, response);
+})
+
+router.get('/funcionario/:idFuncionario', async (request, response) => {
+    return findFuncionarioController.handle(request, response);
+})
+
+router.put('/funcionario/:idFuncionario', async (request, response) => {
+    return setFuncionarioController.handle(request, response);
 })
 
 export { router }

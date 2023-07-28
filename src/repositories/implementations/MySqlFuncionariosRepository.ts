@@ -24,4 +24,13 @@ export class MySqlFuncionariosRepository implements IFuncionariosRepository {
         })
         return funcionario;
     }
+
+    async update(funcionario: Funcionario): Promise<void> {
+        await this.prisma.funcionario.update({
+            where: {
+                idFuncionario: funcionario.idFuncionario
+            },
+            data: funcionario
+        });
+    }
 }
