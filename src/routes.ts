@@ -13,6 +13,10 @@ import { createFuncionarioController } from "./useCases/funcionarios/CreateFunci
 import { findAllFuncionariosController } from "./useCases/funcionarios/FindAllFuncionarios";
 import { findFuncionarioController } from "./useCases/funcionarios/FindFuncionario";
 import { setFuncionarioController } from "./useCases/funcionarios/SetFuncionario";
+import { setServicoController } from "./useCases/servicos/SetServico";
+import { findAllServicosController } from "./useCases/servicos/FindAllServicos";
+import { findServicoController } from "./useCases/servicos/FindServico";
+import { createServicoController } from "./useCases/servicos/CreateServico";
 
 const router = Router();
 
@@ -70,6 +74,22 @@ router.get('/funcionario/:idFuncionario', async (request, response) => {
 
 router.put('/funcionario/:idFuncionario', async (request, response) => {
     return setFuncionarioController.handle(request, response);
+})
+
+router.post('/servico/', async (request, response) => {
+    return createServicoController.handle(request, response);
+})
+
+router.get('/servicos/', async (request, response) => {
+    return findAllServicosController.handle(request, response);
+})
+
+router.get('/servico/:idServico', async (request, response) => {
+    return findServicoController.handle(request, response);
+})
+
+router.put('/servico/:idServico', async (request, response) => {
+    return setServicoController.handle(request, response);
 })
 
 export { router }
