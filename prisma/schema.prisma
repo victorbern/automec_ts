@@ -131,7 +131,7 @@ model Produto_has_VendaDireta {
 model Servico {
   idServico        Int             @id @default(autoincrement())
   descricaoServico String?         @db.VarChar(60)
-  precoServico     String?         @db.VarChar(45)
+  precoServico     Float?
   executafuncao    ExecutaFuncao[]
 }
 
