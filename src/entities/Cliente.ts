@@ -13,7 +13,7 @@ export class Cliente {
     public uf: string;
     public complemento: string;
 
-    constructor(props: Omit<Cliente, 'idCliente'>, idCliente?: string){
+    constructor(props: Omit<Cliente, 'idCliente'>, idCliente?: number){
         Object.assign(this, props);
     }
 }
