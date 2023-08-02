@@ -17,6 +17,10 @@ import { setServicoController } from "./useCases/servicos/SetServico";
 import { findAllServicosController } from "./useCases/servicos/FindAllServicos";
 import { findServicoController } from "./useCases/servicos/FindServico";
 import { createServicoController } from "./useCases/servicos/CreateServico";
+import { createProdutoController } from "./useCases/produtos/CreateProduto";
+import { findAllProdutosController } from "./useCases/produtos/FindAllProdutos";
+import { findProdutoController } from "./useCases/produtos/FindProduto";
+import { setProdutoController } from "./useCases/produtos/SetProduto";
 
 const router = Router();
 
@@ -90,6 +94,22 @@ router.get('/servico/:idServico', async (request, response) => {
 
 router.put('/servico/:idServico', async (request, response) => {
     return setServicoController.handle(request, response);
+})
+
+router.post('/produto/', async (request, response) => {
+    return createProdutoController.handle(request, response);
+})
+
+router.get('/produtos/', async (request, response) => {
+    return findAllProdutosController.handle(request, response);
+})
+
+router.get('/produto/:codigoBarras', async (request, response) => {
+    return findProdutoController.handle(request, response);
+})
+
+router.put('/produto/:codigoBarras', async (request, response) => {
+    return setProdutoController.handle(request, response);
 })
 
 export { router }
