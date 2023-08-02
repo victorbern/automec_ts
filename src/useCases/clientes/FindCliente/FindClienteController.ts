@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { FindClienteUC } from "./FindClienteUC";
+import { AppError } from "../../../errors/AppError";
 
 export class FindClienteController {
     constructor(
@@ -15,9 +16,13 @@ export class FindClienteController {
             } 
             return response.status(400).json({error: 'Cliente não encontrado!', result: ''})
         } catch (error) {
-            return response.status(500).json({
-                error: (error instanceof Error ? error.message : "Unexpected error")
-            })
+            if (error instanceof AppError) {
+                return response.status(error.statusCode).json({ 
+                    error: error.message
+                });
+            } else {
+                return response.status(500).json({ error: "Unexpected Error" });
+            }
         }
     }
 }

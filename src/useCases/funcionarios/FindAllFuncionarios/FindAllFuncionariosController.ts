@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { FindAllFuncionariosUC } from "./FindAllFuncionariosUC";
+import { AppError } from "../../../errors/AppError";
 
 export class FindAllFuncionariosController {
     constructor(
@@ -11,9 +12,13 @@ export class FindAllFuncionariosController {
             const funcionarios = await this.findAllFuncionariosUC.execute();
             return response.status(200).json({error: '', result: funcionarios});
         } catch (error) {
-            return response.status(500).json({
-                error: (error instanceof Error ? error.message : "Unexpected error")
-            });
+            if (error instanceof AppError) {
+                return response.status(error.statusCode).json({ 
+                    error: error.message
+                });
+            } else {
+                return response.status(500).json({ error: "Unexpected Error" });
+            }
         }
     }
 }

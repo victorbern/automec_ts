@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { FindVeiculoUC } from "./FindVeiculoUC";
+import { AppError } from "../../../errors/AppError";
 
 export class FindVeiculoController {
     constructor(
@@ -13,9 +14,13 @@ export class FindVeiculoController {
 
             return response.status(200).json({error: '', result: veiculo})
         } catch (error) {
-            return response.status(500).json({
-                error: (error instanceof Error ? error.message : "Unexpected error")
-            })
+            if (error instanceof AppError) {
+                return response.status(error.statusCode).json({ 
+                    error: error.message
+                });
+            } else {
+                return response.status(500).json({ error: "Unexpected Error" });
+            }
         }
     }
 }

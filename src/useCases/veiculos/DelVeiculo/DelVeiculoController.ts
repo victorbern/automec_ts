@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { DelVeiculoUC } from "./DelVeiculoUC";
+import { AppError } from "../../../errors/AppError";
 
 export class DelVeiculoController {
     constructor(
@@ -15,9 +16,13 @@ export class DelVeiculoController {
             return response.status(200).json({error: '', result: 'Veículo deletado com sucesso!'})
 
         } catch (error) {
-            return response.status(500).json({
-                error: (error instanceof Error ? error.message : "Unexpected error"), result: ''
-            })
+            if (error instanceof AppError) {
+                return response.status(error.statusCode).json({ 
+                    error: error.message
+                });
+            } else {
+                return response.status(500).json({ error: "Unexpected Error" });
+            }
         }
     }
 }
