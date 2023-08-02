@@ -3,19 +3,15 @@ import { InMemoryVeiculosRepository } from "../../../repositories/in-memory/in-m
 import { InMemoryClientesRepository } from "../../../repositories/in-memory/in-memory-ClientesRepository";
 import { CreateVeiculoUC } from "./CreateVeiculoUC";
 import { FindClienteUC } from "../../clientes/FindCliente/FindClienteUC";
-import { FindVeiculoUC } from "../FindVeiculo/FindVeiculoUC";
-import { create } from "ts-node";
 
 describe("Create Veiculo", () => {
     const mySqlClientes = new InMemoryClientesRepository();
     const findCliente = new FindClienteUC(mySqlClientes);
     const mySqlVeiculos = new InMemoryVeiculosRepository();
-    const findVeiculo = new FindVeiculoUC(mySqlVeiculos, findCliente);
 
     const createVeiculo = new CreateVeiculoUC(
         mySqlVeiculos,
-        findCliente,
-        findVeiculo
+        findCliente
     );
 
     // Cria um cliente no banco de dados para teste
