@@ -12,10 +12,13 @@ export class FindAllServicosController {
             const servicos = await this.findAllServicosUC.execute();
             return response.status(200).json({error: '', result: servicos})
         } catch (error) {
-            if (error instanceof AppError) {
-                return response.status(error.statusCode).json({ 
-                    error: error.message
-                });
+            if (error instanceof Error) {
+                if (error instanceof AppError) {
+                    return response.status(error.statusCode).json({ 
+                        error: error.message
+                    });
+                }
+                return response.status(500).json({error: error.message, result: ''});
             } else {
                 return response.status(500).json({ error: "Unexpected Error" });
             }
