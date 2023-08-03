@@ -8,9 +8,9 @@ export class SetClienteController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const idCliente = Number(request.params.id)
-        const { nomeCliente, cpfCnpj, celularCliente, telefoneCliente, cep, endereco, numero, bairro, cidade, uf, complemento } = request.body;
         try {
+            const idCliente = Number(request.params.id)
+            const { nomeCliente, cpfCnpj, celularCliente, telefoneCliente, cep, endereco, numero, bairro, cidade, uf, complemento } = request.body;
             await this.setClienteUC.execute({
                 idCliente,
                 nomeCliente, 

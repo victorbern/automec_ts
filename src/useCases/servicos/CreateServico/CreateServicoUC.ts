@@ -11,7 +11,7 @@ export class CreateServicoUC {
     async execute(data: ICreateServicoRequestDTO): Promise<void> {
         try {
             if (!data.descricaoServico || !data.precoServico) {
-                throw new AppError('There are missing fields', 400);
+                throw new AppError('Campos faltando', 400);
             }
 
             const servico = new Servico(data);

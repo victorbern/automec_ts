@@ -8,8 +8,8 @@ export class CreateClienteController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { nomeCliente, cpfCnpj, celularCliente, telefoneCliente, cep, endereco, numero, bairro, cidade, uf, complemento } = request.body;
         try {
+            const { nomeCliente, cpfCnpj, celularCliente, telefoneCliente, cep, endereco, numero, bairro, cidade, uf, complemento } = request.body;
             await this.createClienteUC.execute({ 
                 nomeCliente, 
                 cpfCnpj, 
@@ -23,7 +23,7 @@ export class CreateClienteController {
                 uf, 
                 complemento 
             })
-            return response.status(201).json({result: "Cliente cadastrado com sucesso!"});
+            return response.status(201).json({error: '', result: "Cliente cadastrado com sucesso!"});
             
         } catch (error) {
             if (error instanceof Error) {

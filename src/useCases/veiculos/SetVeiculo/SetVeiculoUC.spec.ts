@@ -68,7 +68,7 @@ describe("Set Veículo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 2,
-        })).rejects.toThrow("Data missing")
+        })).rejects.toThrow("Campos faltando")
 
         // Tenta alterar os dados de veículo sem passar uma marca
         expect(setVeiculo.execute({
@@ -79,7 +79,7 @@ describe("Set Veículo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 2,
-        })).rejects.toThrow("Data missing")
+        })).rejects.toThrow("Campos faltando")
 
         // Tenta alterar os dados de veículo sem passar um modelo
         expect(setVeiculo.execute({
@@ -90,7 +90,7 @@ describe("Set Veículo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 2,
-        })).rejects.toThrow("Data missing")
+        })).rejects.toThrow("Campos faltando")
 
         // Tenta alterar os dados de um veículo sem passar um idCliente
         expect(setVeiculo.execute({
@@ -101,7 +101,7 @@ describe("Set Veículo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: null,
-        })).rejects.toThrow("Data missing")
+        })).rejects.toThrow("Campos faltando")
 
         // Tenta alterar os dados de um veículo que não existe (placa do veículo não encontrada)
         expect(setVeiculo.execute({
@@ -112,7 +112,7 @@ describe("Set Veículo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 2,
-        })).rejects.toThrow("Veiculo not found")
+        })).rejects.toThrow("Veículo não encontrado")
 
         // Tenta alterar o id do cliente para um id de cliente que não existe
         expect(setVeiculo.execute({
@@ -123,6 +123,6 @@ describe("Set Veículo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 3,
-        })).rejects.toThrow("Client not found")
+        })).rejects.toThrow("Cliente não encontrado")
     })
 })

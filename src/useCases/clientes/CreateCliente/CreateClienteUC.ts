@@ -11,18 +11,16 @@ export class CreateClienteUC {
     async execute(data: ICreateClienteRequestDTO) {
         try {
             if (!data.nomeCliente || !data.celularCliente || !data.cpfCnpj) {
-                throw new AppError('There are missing fields', 400);
+                throw new AppError('Campos faltando', 400);
             }
 
             const clienteAlreadyExists = await this.clientesRepository.findByCpfCnpj(data.cpfCnpj);
             if (clienteAlreadyExists != null) {
-                throw new AppError('The CPF/CNPJ already exists', 400);
+                throw new AppError('O CPF/CNPJ já foi cadastrado', 400);
             }
             
             const cliente = new Cliente(data);
-            await this.clientesRepository.save(cliente).then(() => {
-                return { success: true }
-            });
+            await this.clientesRepository.save(cliente);
         } catch (error) {
             if (error instanceof Error) {
                 throw error;

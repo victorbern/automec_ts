@@ -8,16 +8,16 @@ export class CreateFuncionarioController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        let { nomeFuncionario, isAtivo, funcao } = request.body;
-        isAtivo = String(isAtivo);
         try {
+            let { nomeFuncionario, isAtivo, funcao } = request.body;
+            isAtivo = String(isAtivo);
             await this.createFuncionarioUC.execute({
                 nomeFuncionario,
                 isAtivo,
                 funcao
             })
             
-            return response.status(201).json({result: "Funcionário cadastrado com sucesso!"});
+            return response.status(201).json({error: '', result: "Funcionário cadastrado com sucesso!"});
         } catch (error) {
             if (error instanceof Error) {
                 if (error instanceof AppError) {

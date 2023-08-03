@@ -94,7 +94,7 @@ describe("Create Veiculo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 2,
-        })).rejects.toThrow("There are missing fields")
+        })).rejects.toThrow("Campos faltando")
 
         // Tenta criar um veículo com a marca faltando (é para falhar)
         expect(createVeiculo.execute({
@@ -105,7 +105,7 @@ describe("Create Veiculo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 2,
-        })).rejects.toThrow("There are missing fields")
+        })).rejects.toThrow("Campos faltando")
 
         // Tenta criar um veículo com o modelo faltando (é para falhar)
         expect(createVeiculo.execute({
@@ -116,7 +116,7 @@ describe("Create Veiculo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: null,
-        })).rejects.toThrow("There are missing fields")
+        })).rejects.toThrow("Campos faltando")
 
         // Tenta criar um veiculo com uma placa que já existe (é para falhar)
         expect(createVeiculo.execute({
@@ -127,7 +127,7 @@ describe("Create Veiculo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 2,
-        })).rejects.toThrow("The placaVeiculo already exists")
+        })).rejects.toThrow("A placa já foi cadastrada")
 
         // Tenta criar um veículo com um cliente que não está cadastrado no banco de dados (é para falhar)
         expect(createVeiculo.execute({
@@ -138,6 +138,6 @@ describe("Create Veiculo", () => {
             capacidadeOleo: 5,
             cor: "Branco",
             idCliente: 3,
-        })).rejects.toThrow("The client does not exist")
+        })).rejects.toThrow("O cliente não foi encontrado")
     })
 });

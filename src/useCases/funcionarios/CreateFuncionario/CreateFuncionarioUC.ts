@@ -11,7 +11,7 @@ export class CreateFuncionarioUC {
     async execute(data: ICreateFuncionarioRequestDTO): Promise<void> {
         try {
             if (!data.nomeFuncionario || !data.isAtivo || !data.funcao) {
-                throw new AppError('There are missing fields', 400)
+                throw new AppError('Campos faltando', 400)
             }
 
             if (data.isAtivo !== "sim" && data.isAtivo !== "nao"){

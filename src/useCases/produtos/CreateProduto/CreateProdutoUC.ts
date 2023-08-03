@@ -12,12 +12,12 @@ export class CreateProdutoUC {
     async execute(data: ICreateProdutoRequestDTO): Promise<void> {
         try {
             if (!data.codigoBarras || !data.descricao || !data.precoVenda) {
-                throw new AppError('There are missing fields', 400);
+                throw new AppError('Campos faltando', 400);
             }
 
             const produtoAlreadyExists = await this.produtosRepository.findByCodigoBarras(data.codigoBarras);
             if (produtoAlreadyExists) {
-                throw new AppError('The codigoBarras already exists', 400);
+                throw new AppError('O código de barras já foi cadastrado', 400);
             }
 
             const produto = new Produto(data);

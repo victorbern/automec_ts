@@ -35,27 +35,27 @@ describe("Set Serviço", () => {
             idServico: null,
             descricaoServico: "Limpeza",
             precoServico: 21,
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de serviço sem passar uma descrição
         expect(setServico.execute({
             idServico: 2,
             descricaoServico: "",
             precoServico: 21,
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de serviço sem passar um preço
         expect(setServico.execute({
             idServico: 2,
             descricaoServico: "Limpeza",
             precoServico: null,
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de um serviço que não existe
         expect(setServico.execute({
             idServico: 3,
             descricaoServico: "Limpeza",
             precoServico: 21,
-        })).rejects.toThrow('Service does not found');
+        })).rejects.toThrow('Serviço não encontrado');
     })
 })

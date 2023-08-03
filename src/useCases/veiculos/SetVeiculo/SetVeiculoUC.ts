@@ -12,17 +12,17 @@ export class SetVeiculoUC {
     async execute(data: ISetVeiculoRequestDTO) {
         try {
             if (!data.placaVeiculo || !data.marca || !data.modelo || !data.idCliente) {
-                throw new Error("Data missing")
+                throw new Error("Campos faltando")
             }
 
             const veiculoExistPlaca = await this.veiculosRepository.findByPlacaVeiculo(data.placaVeiculo);
             if (!veiculoExistPlaca) {
-                throw new Error("Veiculo not found")
+                throw new Error("Veículo não encontrado")
             }
 
             const clienteExistId = await this.findCliente.execute({idCliente: data.idCliente});
             if (!clienteExistId) {
-                throw new Error("Client not found")
+                throw new Error("Cliente não encontrado")
             }
 
             const veiculo = new Veiculo(data);

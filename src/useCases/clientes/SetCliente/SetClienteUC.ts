@@ -10,11 +10,11 @@ export class SetClienteUC {
     async execute(data: ISetClienteRequestDTO) {
         try {
             if (!data.idCliente || !data.nomeCliente || !data.cpfCnpj || !data.celularCliente) {
-                throw new Error("Data missing")
+                throw new Error("Campos faltando")
             }
             const clienteExistId = await this.clientesRepository.findById(data.idCliente);
             if (!clienteExistId) {
-                throw new Error("Client not found")
+                throw new Error("Cliente não encontrado")
             }
 
             const cliente = new Cliente(data);

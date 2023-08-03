@@ -46,7 +46,7 @@ describe("Set Funcionário", () => {
                 isAtivo: "sim",
                 funcao: "Mecânico",
             })
-        ).rejects.toThrow('There are missing fields');
+        ).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de funcionário sem passar um nome
         expect(setFuncionario.execute({
@@ -54,7 +54,7 @@ describe("Set Funcionário", () => {
             nomeFuncionario: "",
             isAtivo: "sim",
             funcao: "Mecânico",
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de funcionário sem passar um isAtivo
         expect(setFuncionario.execute({
@@ -62,7 +62,7 @@ describe("Set Funcionário", () => {
             nomeFuncionario: "Luan",
             isAtivo: "",
             funcao: "Mecânico",
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de funcionário sem passar uma função
         expect(setFuncionario.execute({
@@ -70,7 +70,7 @@ describe("Set Funcionário", () => {
             nomeFuncionario: "Luan",
             isAtivo: "sim",
             funcao: "",
-        })).rejects.toThrow('There are missing fields')
+        })).rejects.toThrow('Campos faltando')
 
         // Tenta alterar os dados de funcionario passando um isAtivo inválido
         expect(setFuncionario.execute({
@@ -86,6 +86,6 @@ describe("Set Funcionário", () => {
             nomeFuncionario: "Luan",
             isAtivo: "sim",
             funcao: "Mecânico",
-        })).rejects.toThrow('Employee does not found')
+        })).rejects.toThrow('Funcionário não encontrado')
     });
 });

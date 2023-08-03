@@ -11,7 +11,7 @@ export class CreateServicoController {
         let { descricaoServico, precoServico } = request.body;
         try {
             await this.crateServicoUC.execute({ descricaoServico, precoServico })
-            return response.status(201).json({result: 'Serviço cadastrado com sucesso!'});
+            return response.status(201).json({error: '', result: 'Serviço cadastrado com sucesso!'});
         } catch (error) {
             if (error instanceof Error) {
                 if (error instanceof AppError) {

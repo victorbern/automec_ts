@@ -14,12 +14,12 @@ export class DelClienteUC {
             // Verificar se o cliente existe
             const clienteExists = await this.clientesRepository.findById(data.idCliente)
             if (!clienteExists) {
-                throw new AppError('Client does not found', 400)
+                throw new AppError('Cliente não encontrado', 400)
             }
             
             const hasVeiculo = await this.findVeiculoByCliente.execute({ idCliente: data.idCliente });
             if (hasVeiculo.length > 0) {
-                throw new AppError('The client has vehicles in his name', 400)
+                throw new AppError('O cliente tem veículos em seu nome', 400)
             }
             await this.clientesRepository.delete(data.idCliente)
         } catch (error) {  

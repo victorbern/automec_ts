@@ -70,7 +70,7 @@ describe("Set Cliente", () => {
                 uf: "SP",
                 complemento: "",
             })
-        ).rejects.toThrow("Data missing");
+        ).rejects.toThrow("Campos faltando");
 
         // Tenta alterar os dados de cliente sem passar um nome
         expect(
@@ -88,7 +88,7 @@ describe("Set Cliente", () => {
                 uf: "SP",
                 complemento: "",
             })
-        ).rejects.toThrow("Data missing");
+        ).rejects.toThrow("Campos faltando");
 
         // Tenta alterar os dados de cliente sem passar um cpf/cnpj
         expect(
@@ -106,7 +106,7 @@ describe("Set Cliente", () => {
                 uf: "SP",
                 complemento: "",
             })
-        ).rejects.toThrow("Data missing");
+        ).rejects.toThrow("Campos faltando");
 
         // Tenta alterar os dados de cliente sem passar um número de celular
         expect(
@@ -124,7 +124,7 @@ describe("Set Cliente", () => {
                 uf: "SP",
                 complemento: "",
             })
-        ).rejects.toThrow("Data missing");
+        ).rejects.toThrow("Campos faltando");
 
         // Tenta alterar os dados de um cliente que não existe
         expect(
@@ -142,6 +142,6 @@ describe("Set Cliente", () => {
                 uf: "SP",
                 complemento: "",
             })
-        ).rejects.toThrow("Client not found");
+        ).rejects.toThrow("Cliente não encontrado");
     });
 });

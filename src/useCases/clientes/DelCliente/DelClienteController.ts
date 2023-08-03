@@ -8,9 +8,9 @@ export class DelClienteController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const idCliente = Number(request.params.id)
-
         try {
+            const idCliente = Number(request.params.id)
+            
             await this.delClienteUC.execute({idCliente})
 
             return response.status(200).json({error: '', result: 'Cliente deletado com sucesso!'})

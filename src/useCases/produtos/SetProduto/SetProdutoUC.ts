@@ -11,12 +11,12 @@ export class SetProdutoUC {
     async execute(data: ISetProdutoRequestDTO): Promise<void> {
         try {
             if (!data.codigoBarras || !data.descricao || !data.precoVenda) {
-                throw new AppError('There are missing fields', 400);
+                throw new AppError('Campos faltando', 400);
             }
 
             const produtoExists = await this.produtosRepository.findByCodigoBarras(data.codigoBarras);
             if (!produtoExists) {
-                throw new AppError('Product not found', 400);
+                throw new AppError('Produto não encontrado', 400);
             }
 
             const produto = new Produto(data);

@@ -11,12 +11,12 @@ export class SetServicoUC {
     async execute(data: ISetServicoRequestDTO): Promise<void> {
         try {
             if (!data.idServico || !data.descricaoServico || !data.precoServico) {
-                throw new AppError('There are missing fields', 400)
+                throw new AppError('Campos faltando', 400)
             }
 
             const servicoExists = await this.servicosRepository.findByIdServico(data.idServico);
             if (!servicoExists) {
-                throw new AppError('Service does not found', 400);
+                throw new AppError('Serviço não encontrado', 400);
             }
 
             const servico = new Servico(data);

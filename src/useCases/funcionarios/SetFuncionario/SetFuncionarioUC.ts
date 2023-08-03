@@ -11,7 +11,7 @@ export class SetFuncionarioUC {
     async execute(data: ISetFuncionarioRequestDTO): Promise<void> {
         try {
             if (!data.idFuncionario || !data.nomeFuncionario || !data.isAtivo || !data.funcao) {
-                throw new AppError('There are missing fields', 400)
+                throw new AppError('Campos faltando', 400)
             }
 
             if (data.isAtivo !== "sim" && data.isAtivo !== "nao"){
@@ -20,7 +20,7 @@ export class SetFuncionarioUC {
 
             const funcionarioExists = await this.funcionariosRepository.findByIdFuncionario(data.idFuncionario);
             if (!funcionarioExists) {
-                throw new AppError('Employee does not found', 400)
+                throw new AppError('Funcionário não encontrado', 400)
             }
 
             const funcionario = new Funcionario(data);

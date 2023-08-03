@@ -11,7 +11,7 @@ export class DelVeiculoUC {
         // Verifica se o veículo existe
         const veiculoExists = await this.veiculosRepository.findByPlacaVeiculo(data.placaVeiculo);
         if(!veiculoExists) {
-            throw new AppError('Vehicle does not found', 400)
+            throw new AppError('O veículo não foi encontrado', 400)
         }
 
         await this.veiculosRepository.delete(data.placaVeiculo)

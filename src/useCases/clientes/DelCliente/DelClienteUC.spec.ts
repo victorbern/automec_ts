@@ -70,9 +70,9 @@ describe("Delete Cliente", () => {
         });
 
         // Tenta deletar um cliente que não existe
-        expect(delCliente.execute({idCliente: 4})).rejects.toThrow('Client does not found')
+        expect(delCliente.execute({idCliente: 4})).rejects.toThrow('Cliente não encontrado')
 
         // Tenta deletar um cliente que possui um veículo (acabamos de criar o cliente de teste)
-        expect(delCliente.execute({idCliente: 3})).rejects.toThrow('The client has vehicles in his name');
+        expect(delCliente.execute({idCliente: 3})).rejects.toThrow('O cliente tem veículos em seu nome');
     })
 });

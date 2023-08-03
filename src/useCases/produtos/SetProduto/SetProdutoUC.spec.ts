@@ -41,7 +41,7 @@ describe("Set Produto", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: 36.92
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de produto sem passar uma descrição
         expect(setProduto.execute({
@@ -50,7 +50,7 @@ describe("Set Produto", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: 36.92
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de produto sem passar um preço de venda
         expect(setProduto.execute({
@@ -59,7 +59,7 @@ describe("Set Produto", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: null
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta alterar os dados de um produto que não existe (código de barras não encontrado)
         expect(setProduto.execute({
@@ -68,6 +68,6 @@ describe("Set Produto", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: 36.92
-        })).rejects.toThrow('Product not found');
+        })).rejects.toThrow('Produto não encontrado');
     })
 })

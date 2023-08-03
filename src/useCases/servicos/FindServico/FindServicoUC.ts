@@ -13,7 +13,6 @@ export class FindServicoUC {
             if (servico == null || servico == undefined) {
                 return null;
             }
-
             return servico;
         } catch (error) {
             if (error instanceof Error) {

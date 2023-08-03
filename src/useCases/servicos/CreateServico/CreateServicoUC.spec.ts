@@ -35,12 +35,12 @@ describe("Create Servico", () => {
         expect(createServico.execute({
             descricaoServico: "",
             precoServico: 21,
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta criar um serviço sem um preço
         expect(createServico.execute({
             descricaoServico: "Troca de Oleo",
             precoServico: null,
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
     })
 })

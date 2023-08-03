@@ -29,6 +29,6 @@ describe("Delete Vehicle", () => {
 
     it("should not be able to delete a vehicle", () => {
         // Tenta deletar um veículo que não existe
-        expect(delVeiculo.execute({placaVeiculo: "SDA-1568"})).rejects.toThrow("Vehicle does not found");
+        expect(delVeiculo.execute({placaVeiculo: "SDA-1568"})).rejects.toThrow("O veículo não foi encontrado");
     })
 })

@@ -21,7 +21,7 @@ export class CreateVeiculoController {
                 idCliente
             })
 
-            return response.status(201).json({result: "Veiculo cadastrado com sucesso!"});
+            return response.status(201).json({error: '', result: "Veiculo cadastrado com sucesso!"});
         } catch (error) {
             if (error instanceof Error) {
                 if (error instanceof AppError) {

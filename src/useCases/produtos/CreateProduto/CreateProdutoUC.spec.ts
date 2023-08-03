@@ -62,7 +62,7 @@ describe("Create Veiculo", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: 36.92
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta criar um produto com a descrição faltando (é para falhar)
         expect(createProduto.execute({
@@ -71,7 +71,7 @@ describe("Create Veiculo", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: 36.92
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta criar um produto com o preço de venda faltando (é para falhar)
         expect(createProduto.execute({
@@ -80,7 +80,7 @@ describe("Create Veiculo", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: null
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta criar um produto com um código de barras que já existe (é para falhar)
         expect(createProduto.execute({
@@ -89,6 +89,6 @@ describe("Create Veiculo", () => {
             valorCusto: 18.96,
             quantidadeEstoque: 45,
             precoVenda: 36.92
-        })).rejects.toThrow('The codigoBarras already exists');
+        })).rejects.toThrow('O código de barras já foi cadastrado');
     })
 })

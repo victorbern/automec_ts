@@ -64,7 +64,7 @@ describe("Create Cliente", () => {
                 uf: "SP",
                 complemento: "Rua ao lado da praça",
             })
-        ).rejects.toThrow("There are missing fields");
+        ).rejects.toThrow("Campos faltando");
 
         // Tenta criar um cliente com o celular faltando (é para falhar)
         expect(
@@ -81,7 +81,7 @@ describe("Create Cliente", () => {
                 uf: "SP",
                 complemento: "Rua ao lado da praça",
             })
-        ).rejects.toThrow("There are missing fields");
+        ).rejects.toThrow("Campos faltando");
         
         // Tenta criar um cliente com o cpf/cnpj faltando (é para falhar)
         expect(
@@ -98,7 +98,7 @@ describe("Create Cliente", () => {
                 uf: "SP",
                 complemento: "Rua ao lado da praça",
             })
-        ).rejects.toThrow("There are missing fields");
+        ).rejects.toThrow("Campos faltando");
 
         /* Tenta criar um cliente com um cpf/cnpj que já existe no banco (este é o
         cliente que criamos no teste para ver se estava salvando) */
@@ -116,6 +116,6 @@ describe("Create Cliente", () => {
                 uf: "SP",
                 complemento: "Rua ao lado da praça",
             })
-        ).rejects.toThrow("The CPF/CNPJ already exists");
+        ).rejects.toThrow("O CPF/CNPJ já foi cadastrado");
     });
 });

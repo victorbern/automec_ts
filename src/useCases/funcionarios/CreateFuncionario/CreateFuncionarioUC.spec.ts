@@ -44,21 +44,21 @@ describe("Criar Funcionário", () => {
             nomeFuncionario: "",
             isAtivo: "true",
             funcao: "Mecânico"
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta criar um funcionário sem um isAtivo
         expect(createFuncionario.execute({
             nomeFuncionario: "Luan",
             isAtivo: "",
             funcao: "Mecânico"
-        })).rejects.toThrow('There are missing fields');
+        })).rejects.toThrow('Campos faltando');
 
         // Tenta criar um funcionário sem uma função
         expect(createFuncionario.execute({
             nomeFuncionario: "Luan",
             isAtivo: "true",
             funcao: ""
-        })).rejects.toThrow('There are missing fields')
+        })).rejects.toThrow('Campos faltando')
 
         // Tenta criar um funcionário com um 'isAtivo' inválido
         expect(createFuncionario.execute({
