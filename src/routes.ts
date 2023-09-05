@@ -21,6 +21,7 @@ import { createProdutoController } from "./useCases/produtos/CreateProduto";
 import { findAllProdutosController } from "./useCases/produtos/FindAllProdutos";
 import { findProdutoController } from "./useCases/produtos/FindProduto";
 import { setProdutoController } from "./useCases/produtos/SetProduto";
+import { createOrdemServicoController } from "./useCases/ordens_servico/CreateOrdemServico";
 
 const router = Router();
 
@@ -29,6 +30,10 @@ router.post('/cliente', async (request, response) => {
 })
 
 router.get('/clientes', async (request, response) => {
+    return findAllClientesController.handle(request, response);
+})
+
+router.get('/clientes/:filtro', async (request, response) => {
     return findAllClientesController.handle(request, response);
 })
 
@@ -52,6 +57,10 @@ router.get('/veiculos', async (request, response) => {
     return findAllVeiculosController.handle(request, response);
 })
 
+router.get('/veiculos/:filtro', async (request, response) => {
+    return findAllVeiculosController.handle(request, response);
+})
+
 router.get('/veiculo/:placaVeiculo', async (request, response) => {
     return findVeiculoController.handle(request, response);
 })
@@ -72,6 +81,10 @@ router.get('/funcionarios', async (request, response) => {
     return findAllFuncionariosController.handle(request, response);
 })
 
+router.get('/funcionarios/:filtro', async (request, response) => {
+    return findAllFuncionariosController.handle(request, response);
+})
+
 router.get('/funcionario/:idFuncionario', async (request, response) => {
     return findFuncionarioController.handle(request, response);
 })
@@ -85,6 +98,10 @@ router.post('/servico/', async (request, response) => {
 })
 
 router.get('/servicos/', async (request, response) => {
+    return findAllServicosController.handle(request, response);
+})
+
+router.get('/servicos/:filtro', async (request, response) => {
     return findAllServicosController.handle(request, response);
 })
 
@@ -104,12 +121,20 @@ router.get('/produtos/', async (request, response) => {
     return findAllProdutosController.handle(request, response);
 })
 
+router.get('/produtos/:filtro', async (request, response) => {
+    return findAllProdutosController.handle(request, response);
+})
+
 router.get('/produto/:codigoBarras', async (request, response) => {
     return findProdutoController.handle(request, response);
 })
 
 router.put('/produto/:codigoBarras', async (request, response) => {
     return setProdutoController.handle(request, response);
+})
+
+router.post('/ordem-servico/', async (request, response) => {
+    return createOrdemServicoController.handle(request, response);
 })
 
 export { router }
