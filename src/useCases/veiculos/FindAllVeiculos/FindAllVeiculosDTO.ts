@@ -1,3 +1,7 @@
+export interface IFindAllVeiculosRequestDTO {
+    filtro: string;
+}
+
 export interface IFindAllVeiculosResponseDTO {
     placaVeiculo: string;
     marca: string;

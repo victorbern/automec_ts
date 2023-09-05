@@ -1,5 +1,5 @@
-import { Veiculo } from "@prisma/client";
 import { IVeiculosRepository } from "../IVeiculosRepository";
+import { Veiculo } from "../../entities/Veiculo";
 
 export class InMemoryVeiculosRepository implements IVeiculosRepository {
     public items: Veiculo[] = [{
@@ -16,6 +16,9 @@ export class InMemoryVeiculosRepository implements IVeiculosRepository {
         this.items.push(veiculo);
     }
     async findAll(): Promise<Veiculo[]> {
+        return this.items;
+    }
+    async findAllWithFilter(filtro: string): Promise<Veiculo[]> {
         return this.items;
     }
     async findByPlacaVeiculo(placaVeiculo: string): Promise<Veiculo> {

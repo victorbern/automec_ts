@@ -1,13 +1,19 @@
+import { Produto } from "../../../entities/Produto";
 import { IProdutosRepository } from "../../../repositories/IProdutosRepository";
-import { IFindAllProdutosResponseDTO } from "./FindAllProdutosDTO";
+import { IFindAllProdutosRequestDTO, IFindAllProdutosResponseDTO } from "./FindAllProdutosDTO";
 
 export class FindAllProdutosUC {
     constructor(
         private produtosRepository: IProdutosRepository
     ) {}
 
-    async execute(): Promise<IFindAllProdutosResponseDTO[]> {
-        const produtos = await this.produtosRepository.findAll();
+    async execute(data: IFindAllProdutosRequestDTO): Promise<IFindAllProdutosResponseDTO[]> {
+        let produtos: Produto[] = [];
+        if (!data.filtro) {
+            produtos = await this.produtosRepository.findAll();
+        } else {
+            produtos = await this.produtosRepository.findAllWithFilter(data.filtro);
+        }
         return produtos;
     }
 }

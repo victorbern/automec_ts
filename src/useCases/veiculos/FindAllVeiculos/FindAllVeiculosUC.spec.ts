@@ -12,12 +12,12 @@ describe("Find All Veículos", () => {
     const findAllVeiculos = new FindAllVeiculosUC(mySqlVeiculos, findCliente)
     it("should be able to find all vehicles", () => {
         // Busca todos os veículos e verifica se não houve erros
-        expect(findAllVeiculos.execute()).resolves
+        expect(findAllVeiculos.execute({filtro: null})).resolves
     })
 
     it("should not be able to find any vehicle", () => {     
         mySqlVeiculos.items = []
         // Busca todos os veiculos (com a base zerada) e verifica se não houve erros
-        expect(findAllVeiculos.execute()).resolves.toStrictEqual([])
+        expect(findAllVeiculos.execute({filtro: null})).resolves.toStrictEqual([])
     })
 })

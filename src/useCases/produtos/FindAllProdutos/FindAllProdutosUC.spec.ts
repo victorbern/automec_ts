@@ -8,13 +8,13 @@ describe("Find All Produtos", () => {
 
     it("should be able to find all products", () => {
         // Busca todos os produtos e compara com os dados do banco de dados
-        expect(findAllProdudos.execute()).resolves.toBe(mySqlProdutos.items);
+        expect(findAllProdudos.execute({filtro: null})).resolves.toBe(mySqlProdutos.items);
     });
 
     it("should not be able to find any product", () => {
         mySqlProdutos.items = [];
 
         // Busca todos os produtos (com a base zerada) e verifica se não houve erros
-        expect(findAllProdudos.execute()).resolves.toStrictEqual([]);
+        expect(findAllProdudos.execute({filtro: null})).resolves.toStrictEqual([]);
     })
 })

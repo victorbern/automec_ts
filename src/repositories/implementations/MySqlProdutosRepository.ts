@@ -16,6 +16,26 @@ export class MySqlProdutosRepository implements IProdutosRepository {
         return produtos;
     }
 
+    async findAllWithFilter(filtro: string): Promise<Produto[]> {
+        const produtos: Produto[] = await this.prisma.produto.findMany({
+            where: {
+                OR: [
+                    {
+                        descricao: {
+                            contains: filtro,
+                        }
+                    },
+                    {
+                        codigoBarras: {
+                            contains: filtro,
+                        }
+                    }
+                ]
+            }
+        });
+        return produtos;
+    }
+
     async findByCodigoBarras(codigoBarras: string): Promise<Produto> {
         const produto: Produto = await this.prisma.produto.findUnique({
             where: {

@@ -9,7 +9,8 @@ export class FindAllServicosController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const servicos = await this.findAllServicosUC.execute();
+            const filtro = request.params.filtro;
+            const servicos = await this.findAllServicosUC.execute({filtro});
             return response.status(200).json({error: '', result: servicos})
         } catch (error) {
             if (error instanceof Error) {

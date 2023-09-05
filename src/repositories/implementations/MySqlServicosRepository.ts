@@ -14,6 +14,17 @@ export class MySqlServicosRepository implements IServicosRepository {
         return servicos;
     }
 
+    async findAllWithFilter(filtro: string): Promise<Servico[]> {
+        const servicos: Servico[] = await this.prisma.servico.findMany({
+            where: {
+                descricaoServico: {
+                    contains: filtro
+                }
+            }
+        });
+        return servicos;
+    }
+
     async findByIdServico(idServico: number): Promise<Servico> {
         const servico: Servico = await this.prisma.servico.findUnique({
             where: {

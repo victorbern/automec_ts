@@ -1,3 +1,7 @@
+export interface IFindAllProdutosRequestDTO {
+    filtro: string;
+}
+
 export interface IFindAllProdutosResponseDTO {
     codigoBarras: string;
     descricao: string;

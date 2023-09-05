@@ -29,6 +29,31 @@ export class MySqlVeiculosRepository implements IVeiculosRepository {
         return veiculos;
     }
 
+    async findAllWithFilter(filtro: string): Promise<Veiculo[]> {
+        const veiculos: Array<Veiculo> = await this.prisma.veiculo.findMany({
+            where: {
+                OR: [
+                    {
+                        placaVeiculo: {
+                            contains: filtro,
+                        }
+                    },
+                    {
+                        marca: {
+                            contains: filtro,
+                        }
+                    },
+                    {
+                        modelo: {
+                            contains: filtro,
+                        }
+                    }
+                ]
+            }
+        });
+        return veiculos;
+    }
+
     async save(veiculo: Veiculo): Promise<void> {
         await this.prisma.veiculo.create({
             data: veiculo

@@ -9,7 +9,8 @@ export class FindAllVeiculosController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const veiculos = await this.findAllVeiculosUC.execute();
+            const filtro = request.params.filtro;
+            const veiculos = await this.findAllVeiculosUC.execute({filtro});
             
             return response.status(200).json({error: '', result: veiculos})
         } catch (error) {

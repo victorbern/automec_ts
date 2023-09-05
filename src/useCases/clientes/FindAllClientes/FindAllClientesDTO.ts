@@ -1,3 +1,7 @@
+export interface IFindAllClientesRequestDTO {
+    filtro: string;
+}
+
 export interface IFindAllClientesResponseDTO {
     idCliente: number;
     nomeCliente: string;

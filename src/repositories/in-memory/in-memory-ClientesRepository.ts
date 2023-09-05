@@ -32,6 +32,11 @@ export class InMemoryClientesRepository implements IClientesRepository {
     async findAll(): Promise<Cliente[]> {
         return this.items;
     }
+
+    async findAllWithFilter(filtro: string): Promise<Cliente[]> {
+        return this.items;
+    }
+
     async findByCpfCnpj(cpfCnpj: string): Promise<Cliente> {
         for (let i = 0; i < this.items.length; i++) {
             const cliente = this.items[i];

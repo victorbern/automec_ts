@@ -1,6 +1,7 @@
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
-import { IFindAllVeiculosResponseDTO } from "./FindAllVeiculosDTO";
+import { IFindAllVeiculosRequestDTO, IFindAllVeiculosResponseDTO } from "./FindAllVeiculosDTO";
 import { FindClienteUC } from "../../clientes/FindCliente/FindClienteUC";
+import { Veiculo } from "../../../entities/Veiculo";
 
 export class FindAllVeiculosUC {
     constructor(
@@ -8,8 +9,13 @@ export class FindAllVeiculosUC {
         private findCliente: FindClienteUC
     ) {}
 
-    async execute(): Promise<IFindAllVeiculosResponseDTO[]> {
-        const result = await this.veiculosRepository.findAll();
+    async execute(data: IFindAllVeiculosRequestDTO): Promise<IFindAllVeiculosResponseDTO[]> {
+        let result: Veiculo[] = [];
+        if (!data.filtro) {
+            result = await this.veiculosRepository.findAll();
+        } else {
+            result = await this.veiculosRepository.findAllWithFilter(data.filtro);
+        }
         const veiculos: IFindAllVeiculosResponseDTO[] = [];
         for (let i=0; i<result.length; i++) {
             const cliente = await this.findCliente.execute({idCliente: result[i].idCliente})

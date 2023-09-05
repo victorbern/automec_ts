@@ -9,7 +9,8 @@ export class FindAllFuncionariosController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const funcionarios = await this.findAllFuncionariosUC.execute();
+            const filtro = request.params.filtro;
+            const funcionarios = await this.findAllFuncionariosUC.execute({filtro});
             return response.status(200).json({error: '', result: funcionarios});
         } catch (error) {
             if (error instanceof Error) {

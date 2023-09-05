@@ -10,7 +10,8 @@ export class FindAllClientesController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const result = await this.findAllClientesUC.execute();
+            const filtro = request.params.filtro;
+            const result = await this.findAllClientesUC.execute({filtro});
 
             const clientes = result.map(cliente => {
                 return {

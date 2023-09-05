@@ -8,13 +8,13 @@ describe("Find All Funcionarios", () => {
 
     it("should be able to find all employees", () => {
         // Busca todos os funcionários e compara com os dados do banco de dados
-        expect(findAllFuncionarios.execute()).resolves.toBe(mySqlFuncionarios.items)
+        expect(findAllFuncionarios.execute({filtro: null})).resolves.toBe(mySqlFuncionarios.items)
     })
 
     it("should not be able to find any employee", () => {
         mySqlFuncionarios.items = []
 
         // Busca todos os funcionários (com a base zerada) e verifica se não houve erros
-        expect(findAllFuncionarios.execute()).resolves.toStrictEqual([]);
+        expect(findAllFuncionarios.execute({filtro: null})).resolves.toStrictEqual([]);
     })
 })

@@ -1,21 +1,20 @@
 import { Cliente } from "../../entities/Cliente";
 import { IClientesRepository } from "../IClientesRepository";
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 export class MySqlClientesRepository implements IClientesRepository {
-    
     private prisma = new PrismaClient({
         // log: [
         //     "query", "info", "warn", "error"
         // ]
-    })
-    
+    });
+
     async findByCpfCnpj(cpfCnpj: string): Promise<Cliente> {
         const cliente: Cliente = await this.prisma.cliente.findUnique({
             where: {
                 cpfCnpj: cpfCnpj,
-            }
-        })
+            },
+        });
 
         return cliente;
     }
@@ -25,25 +24,45 @@ export class MySqlClientesRepository implements IClientesRepository {
         return clientes;
     }
 
+    async findAllWithFilter(filtro: string): Promise<Cliente[]> {
+        const clientes: Array<Cliente> = await this.prisma.cliente.findMany({
+            where: {
+                OR: [
+                    {
+                        nomeCliente: {
+                            contains: filtro,
+                        },
+                    },
+                    {
+                        cpfCnpj: {
+                            contains: filtro,
+                        }
+                    }
+                ],
+            },
+        });
+        return clientes;
+    }
+
     async findById(idCliente: number): Promise<Cliente> {
         const cliente: Cliente = await this.prisma.cliente.findUnique({
             where: {
                 idCliente: idCliente,
-            }
-        })
+            },
+        });
         return cliente;
     }
 
     async save(cliente: Cliente): Promise<void> {
         await this.prisma.cliente.create({
-            data: cliente
-        })
+            data: cliente,
+        });
     }
 
     async update(cliente: Cliente): Promise<void> {
         await this.prisma.cliente.update({
             where: {
-                idCliente: cliente.idCliente
+                idCliente: cliente.idCliente,
             },
             data: cliente,
         });
@@ -52,8 +71,8 @@ export class MySqlClientesRepository implements IClientesRepository {
     async delete(idCliente: number): Promise<void> {
         await this.prisma.cliente.delete({
             where: {
-                idCliente: idCliente
-            }
-        })
+                idCliente: idCliente,
+            },
+        });
     }
 }

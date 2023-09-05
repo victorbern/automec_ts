@@ -9,7 +9,8 @@ export class FindAllProdutosController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const produtos = await this.findAllProdutosUC.execute();
+            const filtro = request.params.filtro;
+            const produtos = await this.findAllProdutosUC.execute({filtro});
             return response.status(200).json({ error: '', result: produtos })
         } catch (error) {
             if (error instanceof Error) {

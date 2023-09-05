@@ -25,6 +25,10 @@ export class InMemoryServicosRepository implements IServicosRepository {
         return this.items;
     }
 
+    async findAllWithFilter(filtro: string): Promise<Servico[]> {
+        return this.items;
+    }
+
     async findByIdServico(idServico: number): Promise<Servico> {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].idServico === idServico) {

@@ -26,6 +26,10 @@ export class InMemoryFuncionariosRepository implements IFuncionariosRepository {
         return this.items;
     }
 
+    async findAllWithFilter(filtro: string): Promise<Funcionario[]> {
+        return this.items;
+    }
+
     async findByIdFuncionario(idFuncionario: number): Promise<Funcionario> {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].idFuncionario === idFuncionario) {
