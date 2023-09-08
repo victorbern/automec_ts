@@ -2,12 +2,13 @@ import { OrdemServico } from "../../entities/OrdemServico";
 import { IOrdemServicoRepository } from "../IOrdemServicoRepository";
 
 export class InMemoryOrdemServicoRepository implements IOrdemServicoRepository {
+    
     public items: OrdemServico[] = [{
         idOrdemServico: 1,
         total: 100,
         km: 2000,
-        isFinalizada: "nao",
-        isPaga: "nao",
+        isFinalizada: false,
+        isPaga: false,
         placaVeiculo: "FDP-2912",
         idCliente: 1
     }]
@@ -22,5 +23,36 @@ export class InMemoryOrdemServicoRepository implements IOrdemServicoRepository {
         ordemServico.idOrdemServico = id + 1;
         this.items.push(ordemServico);
         return ordemServico.idOrdemServico;
+    }
+
+    async findById(idOrdemServico: number): Promise<OrdemServico> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idOrdemServico === idOrdemServico) {
+                return this.items[i];
+            }
+        }
+        return null;
+    }
+
+    async findAll(): Promise<OrdemServico[]> {
+        return this.items;
+    }
+    async findByCliente(idCliente: number): Promise<OrdemServico[]> {
+        let ordens: OrdemServico[] = [];
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idCliente === idCliente) {
+                ordens.push(this.items[i]);
+            }
+        }
+        return ordens;
+    }
+    async findByVeiculo(placaVeiculo: string): Promise<OrdemServico[]> {
+        let ordens: OrdemServico[] = [];
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].placaVeiculo === placaVeiculo) {
+                ordens.push(this.items[i]);
+            }
+        }
+        return ordens;
     }
 }

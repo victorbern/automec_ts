@@ -10,4 +10,14 @@ export class MySqlProdutoHasOSDetalhesRepository implements IProdutoHasOSDetalhe
             data: produtoHasOSDetalhes
         })
     }
+
+    async findByOSDetalhes(idOSDetalhes: number): Promise<Produto_has_OSDetalhes[]> {
+        const produtoHasOSDetalhes: Produto_has_OSDetalhes[] = await this.prisma.produto_has_OSDetalhes.findMany({
+            where: {
+                idOSDetalhes: idOSDetalhes,
+            }
+        });
+
+        return produtoHasOSDetalhes;
+    }
 }

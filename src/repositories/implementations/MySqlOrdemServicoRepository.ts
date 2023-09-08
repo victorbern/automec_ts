@@ -17,4 +17,36 @@ export class MySqlOrdemServicoRepository implements IOrdemServicoRepository {
         })
         return ordemServicoCriada.idOrdemServico;
     }
+
+    async findById(idOrdemServico: number): Promise<OrdemServico> {
+        const ordem: OrdemServico = await this.prisma.ordemServico.findUnique({
+            where: {
+                idOrdemServico: idOrdemServico,
+            }
+        });
+
+        return ordem;
+    }
+
+    async findAll(): Promise<OrdemServico[]> {
+        const ordens: OrdemServico[] = await this.prisma.ordemServico.findMany();
+        return ordens;
+    }
+    async findByCliente(idCliente: number): Promise<OrdemServico[]> {
+        const ordens: OrdemServico[] = await this.prisma.ordemServico.findMany({
+            where: {
+                idCliente: idCliente,
+            },
+        });
+        return ordens;
+    }
+    async findByVeiculo(placaVeiculo: string): Promise<OrdemServico[]> {
+        const ordens: OrdemServico[] = await this.prisma.ordemServico.findMany({
+            where: {
+                placaVeiculo: placaVeiculo,
+            },
+        });
+
+        return ordens;
+    }
 }

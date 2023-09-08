@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { FindAllClientesUC } from "./FindAllClientesUC";
-import { Cliente } from "../../../entities/Cliente";
 import { AppError } from "../../../errors/AppError";
 
 export class FindAllClientesController {

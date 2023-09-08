@@ -9,6 +9,7 @@ export class FindAllClientesUC {
 
     async execute(data: IFindAllClientesRequestDTO): Promise<IFindAllClientesResponseDTO[]> {
         let clientes: Cliente[] = [];
+        
         if (!data.filtro) {
             clientes = await this.clientesRepository.findAll();
         } else {

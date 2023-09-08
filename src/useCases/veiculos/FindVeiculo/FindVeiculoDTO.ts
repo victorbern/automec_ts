@@ -9,7 +9,7 @@ export interface IFindVeiculoResponseDTO {
     ano: number;
     capacidadeOleo: number;
     cor: string;
-    veiculo_idCliente: number;
+    idCliente: number;
     nomeCliente: string;
     celularCliente: string;
 }

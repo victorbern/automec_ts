@@ -10,4 +10,14 @@ export class MySqlExecutaFuncaoRepository implements IExecutaFuncaoRepository {
             data: executaFuncao,
         })
     }
+
+    async findByOSDetalhes(idOSDetalhes: number): Promise<ExecutaFuncao[]>{
+        const executaFuncao: ExecutaFuncao[] = await this.prisma.executaFuncao.findMany({
+            where: {
+                idOSDetalhes: idOSDetalhes,
+            }
+        })
+        
+        return executaFuncao;
+    }
 }

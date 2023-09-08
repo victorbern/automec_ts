@@ -24,7 +24,7 @@ export class FindVeiculoUC {
                 ano: result.ano,
                 capacidadeOleo: result.capacidadeOleo,
                 cor: result.cor,
-                veiculo_idCliente: result.idCliente,
+                idCliente: result.idCliente,
                 nomeCliente: cliente.nomeCliente,
                 celularCliente: cliente.celularCliente,
             };

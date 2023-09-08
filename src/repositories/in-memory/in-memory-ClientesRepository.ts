@@ -34,7 +34,13 @@ export class InMemoryClientesRepository implements IClientesRepository {
     }
 
     async findAllWithFilter(filtro: string): Promise<Cliente[]> {
-        return this.items;
+        let clientes: Cliente[] = [];
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].nomeCliente.includes(filtro) || this.items[i].cpfCnpj.includes(filtro)) {
+                clientes.push(this.items[i]);
+            }
+        }
+        return clientes;
     }
 
     async findByCpfCnpj(cpfCnpj: string): Promise<Cliente> {

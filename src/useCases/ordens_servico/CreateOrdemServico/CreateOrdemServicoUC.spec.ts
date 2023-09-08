@@ -19,7 +19,6 @@ import { CreateOrdemServicoUC } from "./CreateOrdemServicoUC";
 import { InMemoryOrdemServicoRepository } from "../../../repositories/in-memory/in-memory-OrdemServicoRepository";
 import { Produto_has_OSDetalhes } from "../../../entities/ProdutoHasOSDetalhes";
 import { ExecutaFuncao } from "../../../entities/ExecutaFuncao";
-import { createOrdemServicoUC } from ".";
 
 describe("Create Ordem de Serviço", () => {
     const mySqlClientes = new InMemoryClientesRepository();

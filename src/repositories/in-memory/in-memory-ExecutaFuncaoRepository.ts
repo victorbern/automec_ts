@@ -12,4 +12,16 @@ export class InMemoryExecutaFuncaoRepository implements IExecutaFuncaoRepository
     async save(executaFuncao: ExecutaFuncao): Promise<void> {
         this.items.push(executaFuncao);
     }
+
+    async findByOSDetalhes(idOSDetalhes: number): Promise<ExecutaFuncao[]> {
+        let executaFuncaoList: ExecutaFuncao[] = [];
+
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idOSDetalhes === idOSDetalhes) {
+                executaFuncaoList.push(this.items[i]);
+            }
+        }
+        
+        return executaFuncaoList;
+    }
 }

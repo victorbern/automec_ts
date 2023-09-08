@@ -12,4 +12,14 @@ export class MySqlOSDetalhesRepository implements IOSDetalhesRepository{
 
         return osDetalhesCriado.idOSDetalhes;
     }
+
+    async findByOrdemServico(idOrdemServico: number): Promise<OSDetalhes> {
+        const osDetalhes: OSDetalhes = await this.prisma.oSDetalhes.findFirst({
+            where: {
+                idOrdemServico: idOrdemServico,
+            }
+        })
+
+        return osDetalhes;
+    }
 }

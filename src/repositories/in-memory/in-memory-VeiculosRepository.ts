@@ -19,7 +19,14 @@ export class InMemoryVeiculosRepository implements IVeiculosRepository {
         return this.items;
     }
     async findAllWithFilter(filtro: string): Promise<Veiculo[]> {
-        return this.items;
+        let veiculos: Veiculo[] = [];
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].placaVeiculo.includes(filtro) || this.items[i].marca.includes(filtro) || this.items[i].modelo.includes(filtro)){
+                veiculos.push(this.items[i]);
+            }
+        }
+
+        return veiculos;
     }
     async findByPlacaVeiculo(placaVeiculo: string): Promise<Veiculo> {
         for (let i = 0; i < this.items.length; i++) {
