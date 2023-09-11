@@ -1,5 +1,5 @@
 export interface IFindAllVeiculosRequestDTO {
-    filtro: string;
+    filtro?: string;
 }
 
 export interface IFindAllVeiculosResponseDTO {
@@ -9,7 +9,7 @@ export interface IFindAllVeiculosResponseDTO {
     ano: number;
     capacidadeOleo: number;
     cor: string;
-    veiculo_idCliente: number;
+    idCliente: number;
     nomeCliente: string;
     celularCliente: string;
 }

@@ -1,5 +1,5 @@
 export interface IFindAllClientesRequestDTO {
-    filtro: string;
+    filtro?: string;
 }
 
 export interface IFindAllClientesResponseDTO {

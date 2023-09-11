@@ -26,7 +26,7 @@ export class FindAllVeiculosUC {
                 ano: result[i].ano,
                 capacidadeOleo: result[i].capacidadeOleo,
                 cor: result[i].cor,
-                veiculo_idCliente: result[i].idCliente,
+                idCliente: result[i].idCliente,
                 nomeCliente: cliente.nomeCliente,
                 celularCliente: cliente.celularCliente
             })

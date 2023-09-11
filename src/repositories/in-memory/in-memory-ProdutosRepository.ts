@@ -19,7 +19,15 @@ export class InMemoryProdutosRepository implements IProdutosRepository {
     }
 
     async findAllWithFilter(filtro: string): Promise<Produto[]> {
-        return this.items;
+        let produtos: Produto[] = [];
+
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].codigoBarras.includes(filtro) || this.items[i].descricao.includes(filtro)) {
+                produtos.push(this.items[i]);
+            }
+        }
+
+        return produtos;
     }
 
     async findByCodigoBarras(codigoBarras: string): Promise<Produto> {
