@@ -17,7 +17,7 @@ export class FindVeiculoByClienteUC {
                 ano: result[i].ano,
                 capacidadeOleo: result[i].capacidadeOleo,
                 cor: result[i].cor,
-                veiculo_idCliente: result[i].idCliente,
+                idCliente: result[i].idCliente,
             })
         }
         return veiculos;

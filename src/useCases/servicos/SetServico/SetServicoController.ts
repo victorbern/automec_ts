@@ -8,10 +8,11 @@ export class SetServicoControlller {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const idServico = Number(request.params.idServico);
-        const { descricaoServico, precoServico } = request.body;
-
+        
         try {
+            const idServico = Number(request.params.idServico);
+            const descricaoServico = request.body.descricaoServico;
+            const precoServico = Number(request.body.precoServico);
             await this.setServicoUC.execute({
                 idServico,
                 descricaoServico,
@@ -21,6 +22,7 @@ export class SetServicoControlller {
             return response.status(200).json({ error: '', result: 'Dados alterados com sucesso!' })
         } catch (error) {
             if (error instanceof Error) {
+                console.log(error)
                 if (error instanceof AppError) {
                     return response.status(error.statusCode).json({ 
                         error: error.message

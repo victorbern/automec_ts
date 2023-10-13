@@ -9,7 +9,12 @@ export class CreateProdutoController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const { codigoBarras, descricao, valorCusto, quantidadeEstoque, precoVenda } = request.body;
+            const codigoBarras = request.body.codigoBarras;
+            const descricao = request.body.descricao;
+            const valorCusto = Number(request.body.valorCusto);
+            const quantidadeEstoque = Number(request.body.quantidadeEstoque);
+            const precoVenda = Number(request.body.precoVenda);
+
             await this.createProdutoUC.execute({
                 codigoBarras,
                 descricao,
@@ -21,6 +26,7 @@ export class CreateProdutoController {
             return response.status(201).json({error: '', result: "Produto cadastrado com sucesso!"})
         } catch (error) {
             if (error instanceof Error) {
+                console.log(error)
                 if (error instanceof AppError) {
                     return response.status(error.statusCode).json({ 
                         error: error.message

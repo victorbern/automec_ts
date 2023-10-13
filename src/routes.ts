@@ -26,6 +26,7 @@ import { findOrdemServicoController } from "./useCases/ordens_servico/FindOrdemS
 import { findAllOrdemServicoController } from "./useCases/ordens_servico/FindAllOrdemServico";
 import { setOrdemServicoController } from "./useCases/ordens_servico/SetOrdemServico";
 import { delOrdemServicoController } from "./useCases/ordens_servico/DelOrdemServico";
+import { findVeiculoByClienteController } from "./useCases/veiculos/FindVeiculoByCliente";
 
 const router = Router();
 
@@ -77,6 +78,11 @@ router.get('/veiculos/:filtro', async (request, response) => {
 // Buscar veículo pela placa
 router.get('/veiculo/:placaVeiculo', async (request, response) => {
     return findVeiculoController.handle(request, response);
+})
+
+// Buscar veículos pelo cliente
+router.get('/veiculo-por-cliente/:id', async (request, response) => {
+    return findVeiculoByClienteController.handle(request, response);
 })
 
 // Alterar dados de veículo

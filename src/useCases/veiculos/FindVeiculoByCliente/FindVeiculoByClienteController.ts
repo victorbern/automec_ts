@@ -1,18 +1,19 @@
 import { Request, Response } from "express";
-import { CreateServicoUC } from "./CreateServicoUC";
+import { FindVeiculoByClienteUC } from "./FindVeiculoByClienteUC";
 import { AppError } from "../../../errors/AppError";
 
-export class CreateServicoController {
+export class FindVeiculoByClienteController {
     constructor(
-        private crateServicoUC: CreateServicoUC
+        private findVeiculoByClienteUC: FindVeiculoByClienteUC,
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const descricaoServico = request.body.descricaoServico;
-            const precoServico= Number(request.body.precoServico);
-            await this.crateServicoUC.execute({ descricaoServico, precoServico })
-            return response.status(201).json({error: '', result: 'Serviço cadastrado com sucesso!'});
+            const idCliente = Number(request.params.id);
+            
+            const veiculos = await this.findVeiculoByClienteUC.execute({idCliente});
+
+            return response.status(200).json({error: '', result: veiculos})
         } catch (error) {
             if (error instanceof Error) {
                 console.log(error)
