@@ -29,4 +29,22 @@ export class InMemoryOSDetalhesRepository implements IOSDetalhesRepository {
         }
         return null;
     }
+
+    async findById(idOSDetalhes: number): Promise<OSDetalhes> {
+        for (let i in this.items) {
+            const osDetalhes = this.items[i];
+            if (osDetalhes.idOSDetalhes == idOSDetalhes) {
+                return osDetalhes;
+            }
+        }
+        return null;
+    }
+
+    async delete(idOSDetalhes: number): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idOSDetalhes == idOSDetalhes) {
+                this.items.splice(i, 1);
+            }
+        }
+    }
 }

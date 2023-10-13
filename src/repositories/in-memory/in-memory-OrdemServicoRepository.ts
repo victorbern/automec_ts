@@ -2,7 +2,7 @@ import { OrdemServico } from "../../entities/OrdemServico";
 import { IOrdemServicoRepository } from "../IOrdemServicoRepository";
 
 export class InMemoryOrdemServicoRepository implements IOrdemServicoRepository {
-    
+
     public items: OrdemServico[] = [{
         idOrdemServico: 1,
         total: 100,
@@ -54,5 +54,29 @@ export class InMemoryOrdemServicoRepository implements IOrdemServicoRepository {
             }
         }
         return ordens;
+    }
+
+    async update(ordemServico: OrdemServico): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idOrdemServico == ordemServico.idOrdemServico) {
+                this.items[i] = {
+                    idOrdemServico: ordemServico.idOrdemServico,
+                    total: ordemServico.total,
+                    km: ordemServico.km,
+                    isFinalizada: ordemServico.isFinalizada,
+                    isPaga: ordemServico.isPaga,
+                    placaVeiculo: ordemServico.placaVeiculo,
+                    idCliente: ordemServico.idCliente
+                }
+            }
+        }
+    }
+
+    async delete(idOrdemServico: number): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idOrdemServico == idOrdemServico) {
+                this.items.splice(i, 1);
+            }
+        }
     }
 }
