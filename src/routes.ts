@@ -24,6 +24,8 @@ import { setProdutoController } from "./useCases/produtos/SetProduto";
 import { createOrdemServicoController } from "./useCases/ordens_servico/CreateOrdemServico";
 import { findOrdemServicoController } from "./useCases/ordens_servico/FindOrdemServico";
 import { findAllOrdemServicoController } from "./useCases/ordens_servico/FindAllOrdemServico";
+import { setOrdemServicoController } from "./useCases/ordens_servico/SetOrdemServico";
+import { delOrdemServicoController } from "./useCases/ordens_servico/DelOrdemServico";
 
 const router = Router();
 
@@ -180,6 +182,16 @@ router.get('/ordens-servico/', async (request, response) => {
 // Busca ordens de serviço usando filtro
 router.get('/ordens-servico/:filtro', async (request, response) => {
     return findAllOrdemServicoController.handle(request, response);
+})
+
+// Alterar dados de ordem de serviço
+router.put('/ordem-servico/:id', async (request, response) => {
+    return setOrdemServicoController.handle(request, response);
+})
+
+// Deletar uma ordem de serviço pelo id
+router.delete('/ordem-servico/:id', async (request, response) => {
+    return delOrdemServicoController.handle(request, response);
 })
 
 export { router }
