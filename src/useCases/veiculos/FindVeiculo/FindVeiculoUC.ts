@@ -13,7 +13,7 @@ export class FindVeiculoUC {
     async execute(data: IFindVeiculoRequestDTO): Promise<IFindVeiculoResponseDTO> {
         try {
             const result = await this.veiculosRepository.findByPlacaVeiculo(data.placaVeiculo)
-            if (result == null) {
+            if (result == null || result == undefined) {
                 return null;
             }
             const cliente = await this.findCliente.execute({idCliente: result.idCliente})

@@ -3,8 +3,8 @@ export interface IFindAllExecutaFuncaoRequestDTO {
 }
 
 export interface IFindAllExecutaFuncaoResponseDTO {
-    idFuncionario: number;
-    idServico: number;
-    observacao: string;
     idOSDetalhes: number;
+    idServico: number;
+    idFuncionario: number;
+    observacao: string;
 }

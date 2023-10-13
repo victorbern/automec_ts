@@ -9,5 +9,6 @@ export class OrdemServico {
 
     constructor(props: Omit<OrdemServico, 'idOrdemServico'>, idOrdemServico?: number){
         Object.assign(this, props);
+        this.idOrdemServico = idOrdemServico;
     }
 }

@@ -78,6 +78,7 @@ export class InMemoryClientesRepository implements IClientesRepository {
                     uf: cliente.uf,
                     complemento: cliente.complemento,
                 };
+                break;
             }
         }
     }

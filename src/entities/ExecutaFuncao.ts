@@ -1,8 +1,8 @@
 export class ExecutaFuncao {
-    public idFuncionario: number;
-    public idServico: number;
-    public observacao: string;
     public idOSDetalhes: number;
+    public idServico: number;
+    public idFuncionario: number;
+    public observacao: string;
 
     constructor(props: ExecutaFuncao) {
         Object.assign(this, props);

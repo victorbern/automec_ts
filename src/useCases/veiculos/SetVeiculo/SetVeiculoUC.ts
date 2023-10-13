@@ -1,4 +1,5 @@
 import { Veiculo } from "../../../entities/Veiculo";
+import { AppError } from "../../../errors/AppError";
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
 import { FindClienteUC } from "../../clientes/FindCliente/FindClienteUC";
 import { ISetVeiculoRequestDTO } from "./SetVeiculoDTO";
@@ -32,7 +33,7 @@ export class SetVeiculoUC {
             if (error instanceof Error) {
                 throw error;
             } else {
-                throw new Error("Unexpected error")
+                throw new AppError("Unexpected error!", 500)
             }
         }
     }

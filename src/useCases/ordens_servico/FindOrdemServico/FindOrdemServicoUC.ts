@@ -37,7 +37,6 @@ export class FindOrdemServicoUC {
                 throw new AppError("Campo id faltante", 400);
             }
             const ordem = await this.ordemDeServicoRepository.findById(data.idOrdemServico);
-
             if (ordem == null || ordem == undefined) {
                 return null;
             }
@@ -81,14 +80,9 @@ export class FindOrdemServicoUC {
                     });
                 }
             }
-
-            let ordemServico = {
-                idOrdemServico: ordem.idOrdemServico,
-                total: ordem.total,
-                km: ordem.km,
-                isFinalizada: ordem.isFinalizada,
-                isPaga: ordem.isPaga,
-                cliente: {
+            let clienteOS = {};
+            if (cliente) {
+                clienteOS = {
                     idCliente: cliente.idCliente,
                     nomeCliente: cliente.nomeCliente,
                     cpfCnpj: cliente.cpfCnpj,
@@ -101,20 +95,45 @@ export class FindOrdemServicoUC {
                     cidade: cliente.cidade,
                     uf: cliente.uf,
                     complemento: cliente.complemento,
-                },
-                veiculo: {
-                    placaVeiculo: veiculo.placaVeiculo,
+                }
+            } else {
+                clienteOS = {
+                    idCliente: ordem.idCliente,
+                    dados: "O cliente não foi encontrado",
+                }
+            }
+
+            let veiculoOS = {};
+            if (veiculo) {
+                veiculoOS = {
+                    placaVeiculo: ordem.placaVeiculo,
                     marca: veiculo.marca,
                     modelo: veiculo.modelo,
                     ano: veiculo.ano,
                     capacidadeOleo: veiculo.capacidadeOleo,
                     cor: veiculo.cor,
                     idCliente: veiculo.idCliente,
-                },
+                }
+            } else {
+                veiculoOS = {
+                    placaVeiculo: ordem.placaVeiculo,
+                    dados: "O veículo não foi encontrado",
+                }
+            }
+
+            let ordemServico = {
+                idOrdemServico: ordem.idOrdemServico,
+                total: ordem.total,
+                km: ordem.km,
+                isFinalizada: ordem.isFinalizada,
+                isPaga: ordem.isPaga,
+                cliente: clienteOS,
+                veiculo: veiculoOS,
                 data: osDetalhes.dataOS,
                 produtos: produtos,
                 servicos: servicos,
             }
+            
 
             return ordemServico;
         } catch(error) {

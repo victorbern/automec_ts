@@ -40,7 +40,7 @@ export class CreateOrdemServicoUC {
                 throw new AppError("O cliente não foi encontrado", 400);
             }
 
-            // Veriffica se o veículo existe
+            // Verifica se o veículo existe
             const veiculoExists = await this.findVeiculoUC.execute({placaVeiculo});
             if (veiculoExists == null) {
                 throw new AppError("O veículo não foi encontrado", 400);
