@@ -16,6 +16,7 @@ export class DelClienteController {
             return response.status(200).json({error: '', result: 'Cliente deletado com sucesso!'})
         } catch (error) {
             if (error instanceof Error) {
+                console.log(error)
                 if (error instanceof AppError) {
                     return response.status(error.statusCode).json({ 
                         error: error.message

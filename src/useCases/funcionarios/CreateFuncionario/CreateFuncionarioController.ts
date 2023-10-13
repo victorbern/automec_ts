@@ -20,6 +20,7 @@ export class CreateFuncionarioController {
             return response.status(201).json({error: '', result: "Funcionário cadastrado com sucesso!"});
         } catch (error) {
             if (error instanceof Error) {
+                console.log(error)
                 if (error instanceof AppError) {
                     return response.status(error.statusCode).json({ 
                         error: error.message

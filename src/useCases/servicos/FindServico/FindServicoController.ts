@@ -17,6 +17,7 @@ export class FindServicoController {
             return response.status(400).json({error: 'Serviço não encontrado', result: ''})
         } catch (error) {
             if (error instanceof Error) {
+                console.log(error)
                 if (error instanceof AppError) {
                     return response.status(error.statusCode).json({ 
                         error: error.message
