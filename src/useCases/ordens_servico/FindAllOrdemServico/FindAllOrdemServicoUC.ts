@@ -83,7 +83,7 @@ export class FindAllOrdemServicoUC {
                     let ordem = await this.findOrdemServico.execute({ idOrdemServico });
                     result.push(ordem)
                 }
-            }
+            } 
             return result;
 
         } catch (error) {

@@ -11,11 +11,38 @@ export interface IFindOrdemServicoResponseDTO {
     km: number;
     isFinalizada: boolean;
     isPaga: boolean;
-    cliente: Cliente,
-    veiculo: Veiculo,
+    cliente: IFindOrdemServicoCliente,
+    veiculo: IFindOrdemServicoVeiculo,
     data: Date,
     produtos: IFindOrdemServicoProdutos[],
     servicos: IFindOrdemServicoServicos[],
+}
+
+export interface IFindOrdemServicoCliente {
+    idCliente?: number,
+    nomeCliente?: string,
+    cpfCnpj?: string,
+    celularCliente?: string,
+    telefoneCliente?: string,
+    cep?: string,
+    endereco?: string,
+    numero?: string,
+    bairro?: string,
+    cidade?: string,
+    uf?: string,
+    complemento?: string,
+    dados?: string,
+}
+
+export interface IFindOrdemServicoVeiculo {
+    placaVeiculo?: string,
+    marca?: string,
+    modelo?: string,
+    ano?: number,
+    capacidadeOleo?: number,
+    cor?: string,
+    idCliente?: number,
+    dados?: string,
 }
 
 export interface IFindOrdemServicoProdutos {
