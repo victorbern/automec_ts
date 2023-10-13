@@ -6,4 +6,6 @@ export interface IOrdemServicoRepository {
     findById(idOrdemServico: number): Promise<OrdemServico>;
     findByCliente(idCliente: number): Promise<OrdemServico[]>;
     findByVeiculo(placaVeiculo: string): Promise<OrdemServico[]>;
+    update(ordemServico: OrdemServico): Promise<void>;
+    delete(idOrdemServico: number): Promise<void>;
 }
