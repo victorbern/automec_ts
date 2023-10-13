@@ -10,9 +10,13 @@ export class CreateExecutaFuncaoUC {
 
     async execute(data: ICreateExecutaFuncaoRequestDTO): Promise<void> {
         try {
-            const { idFuncionario, idServico, observacao, idOSDetalhes } = data;
+            const { idOSDetalhes, idServico, idFuncionario, observacao,  } = data;
 
-            const executaFuncao = new ExecutaFuncao({idFuncionario, idServico, observacao, idOSDetalhes});
+            if (!idOSDetalhes || !idServico || !idFuncionario) {
+                throw new AppError("Campos faltando", 400);
+            }
+
+            const executaFuncao = new ExecutaFuncao({idOSDetalhes, idServico, idFuncionario, observacao });
 
             await this.executaFuncaoRepository.save(executaFuncao);
 
