@@ -10,8 +10,12 @@ export class FindAllProdutoHasOSDetalhesUC {
 
     async execute(data: IFindAllProdutoHasOSDetalhesRequestDTO): Promise<IFindAllProdutoHasOSDetalhesResponseDTO[]> {
         try {
-            const produtoHasOSDetalhes: Produto_has_OSDetalhes[] = await this.produtoHasOSDetalhesRepository.findByOSDetalhes(data.idOSDetalhes);
-            return produtoHasOSDetalhes;
+            const { idOSDetalhes } = data;
+            if (!idOSDetalhes) {
+                throw new AppError("Campos faltando", 400);
+            }
+            const produtoHasOSDetalhesList: Produto_has_OSDetalhes[] = await this.produtoHasOSDetalhesRepository.findByOSDetalhes(idOSDetalhes);
+            return produtoHasOSDetalhesList;
         } catch (error) {
             if (error instanceof Error) {
                 throw error;
