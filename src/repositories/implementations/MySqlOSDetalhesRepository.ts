@@ -22,4 +22,21 @@ export class MySqlOSDetalhesRepository implements IOSDetalhesRepository{
 
         return osDetalhes;
     }
+
+    async findById(idOSDetalhes: number): Promise<OSDetalhes> {
+        const osDetalhes: OSDetalhes = await this.prisma.oSDetalhes.findUnique({
+            where: {
+                idOSDetalhes: idOSDetalhes,
+            },
+        });
+        return osDetalhes;
+    }
+
+    async delete(idOSDetalhes: number): Promise<void> {
+        await this.prisma.oSDetalhes.delete({
+            where: {
+                idOSDetalhes: idOSDetalhes,
+            },
+        });
+    }
 }

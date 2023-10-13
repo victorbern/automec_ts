@@ -49,4 +49,21 @@ export class MySqlOrdemServicoRepository implements IOrdemServicoRepository {
 
         return ordens;
     }
+
+    async update(ordemServico: OrdemServico): Promise<void> {
+        await this.prisma.ordemServico.update({
+            where: {
+                idOrdemServico: ordemServico.idOrdemServico,
+            },
+            data: ordemServico,
+        })
+    }
+
+    async delete(idOrdemServico: number): Promise<void> {
+        await this.prisma.ordemServico.delete({
+            where: {
+                idOrdemServico: idOrdemServico,
+            },
+        });
+    }
 }

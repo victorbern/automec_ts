@@ -20,4 +20,40 @@ export class MySqlProdutoHasOSDetalhesRepository implements IProdutoHasOSDetalhe
 
         return produtoHasOSDetalhes;
     }
+
+    async findUnique(idOSDetalhes: number, codigoBarras: string): Promise<Produto_has_OSDetalhes> {
+        let produtoHasOSDetalhes = await this.prisma.produto_has_OSDetalhes.findUnique({
+            where: {
+                idOSDetalhes_codigoBarras: {
+                    idOSDetalhes: idOSDetalhes,
+                    codigoBarras: codigoBarras
+                }
+            }
+        })
+
+        return produtoHasOSDetalhes;
+    }
+
+    async update(produtoHasOSDetalhes: Produto_has_OSDetalhes): Promise<void> {
+        await this.prisma.produto_has_OSDetalhes.update({
+            where: {
+                idOSDetalhes_codigoBarras: {
+                    idOSDetalhes: produtoHasOSDetalhes.idOSDetalhes,
+                    codigoBarras: produtoHasOSDetalhes.codigoBarras,
+                },
+            },
+            data: produtoHasOSDetalhes,
+        })
+    }
+
+    async delete(idOSDetalhes: number, codigoBarras: string): Promise<void> {
+        await this.prisma.produto_has_OSDetalhes.delete({
+            where: {
+                idOSDetalhes_codigoBarras: {
+                    idOSDetalhes: idOSDetalhes,
+                    codigoBarras: codigoBarras,
+                }
+            }
+        });
+    }
 }
