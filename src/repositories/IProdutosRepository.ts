@@ -6,4 +6,5 @@ export interface IProdutosRepository {
     findAllWithFilter(filtro: string): Promise<Produto[]>;
     findByCodigoBarras(codigoBarras: string): Promise<Produto>;
     update(produto: Produto): Promise<void>;
+    delete(codigoBarras: string): Promise<void>;
 }

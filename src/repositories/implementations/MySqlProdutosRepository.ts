@@ -54,4 +54,12 @@ export class MySqlProdutosRepository implements IProdutosRepository {
             data: produto,
         });
     }
+
+    async delete(codigoBarras: string): Promise<void> {
+        await this.prisma.produto.delete({
+            where: {
+                codigoBarras: codigoBarras,
+            },
+        });
+    }
 }

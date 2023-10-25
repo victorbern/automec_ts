@@ -52,4 +52,12 @@ export class InMemoryProdutosRepository implements IProdutosRepository {
             }
         }
     }
+
+    async delete(codigoBarras: string): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].codigoBarras === codigoBarras) {
+                this.items.splice(i, 1);
+            }
+        }
+    }
 }
