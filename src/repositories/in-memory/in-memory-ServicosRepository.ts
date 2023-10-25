@@ -56,4 +56,12 @@ export class InMemoryServicosRepository implements IServicosRepository {
             }
         }
     }
+
+    async delete(idServico: number): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idServico === idServico) {
+                this.items.splice(i, 1);
+            }
+        }
+    }
 }

@@ -6,4 +6,5 @@ export interface IServicosRepository {
     findAllWithFilter(filtro: string): Promise<Servico[]>;
     findByIdServico(idServico: number): Promise<Servico>;
     update(servico: Servico): Promise<void>;
+    delete(idServico: number): Promise<void>;
 }

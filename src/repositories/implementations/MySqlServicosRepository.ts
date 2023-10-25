@@ -42,4 +42,12 @@ export class MySqlServicosRepository implements IServicosRepository {
             data: servico
         })
     }
+
+    async delete(idServico: number): Promise<void> {
+        await this.prisma.servico.delete({
+            where: {
+                idServico: idServico,
+            }
+        });
+    }
 }
