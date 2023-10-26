@@ -56,6 +56,18 @@ export class InMemoryOrdemServicoRepository implements IOrdemServicoRepository {
         return ordens;
     }
 
+    async isPaga(idOrdemServico: number): Promise<Boolean> {
+        let ordemServico: OrdemServico;
+        for (let i in this.items) {
+            if (this.items[i].idOrdemServico == idOrdemServico) {
+                ordemServico = this.items[i];
+                break;
+            }
+        }
+
+        return ordemServico.isPaga;
+    }
+
     async update(ordemServico: OrdemServico): Promise<void> {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].idOrdemServico == ordemServico.idOrdemServico) {

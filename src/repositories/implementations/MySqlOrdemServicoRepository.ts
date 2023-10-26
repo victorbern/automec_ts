@@ -50,6 +50,16 @@ export class MySqlOrdemServicoRepository implements IOrdemServicoRepository {
         return ordens;
     }
 
+    async isPaga(idOrdemServico: number): Promise<Boolean> {
+        const ordemServico = await this.prisma.ordemServico.findUnique({
+            where: {
+                idOrdemServico: idOrdemServico,
+            }
+        })
+
+        return ordemServico.isPaga;
+    }
+
     async update(ordemServico: OrdemServico): Promise<void> {
         await this.prisma.ordemServico.update({
             where: {
