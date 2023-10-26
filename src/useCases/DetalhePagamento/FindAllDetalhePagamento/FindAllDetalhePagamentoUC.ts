@@ -10,7 +10,13 @@ export class FindAllDetalhePagamentoUC {
 
     async execute(data: IFindAllDetalhePagamentoRequestDTO): Promise<IFindAllDetalhePagamentoResponseDTO[]> {
         try {
-            const detalhePagamentoList: DetalhePagamento[] = await this.detalhePagamentoRepository.findByPagamento(data.idPagamento);
+            const idPagamento = data.idPagamento;
+
+            if (!idPagamento) {
+                throw new AppError("Campos faltando", 400);
+            }
+
+            const detalhePagamentoList: DetalhePagamento[] = await this.detalhePagamentoRepository.findByPagamento(idPagamento);
 
             return detalhePagamentoList;
 
