@@ -59,4 +59,12 @@ export class InMemoryFuncionariosRepository implements IFuncionariosRepository {
             }
         }
     }
+
+    async delete(idFuncionario: number): Promise<void> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idFuncionario === idFuncionario) {
+                this.items.splice(i, 1);
+            }
+        }
+    }
 }

@@ -55,4 +55,12 @@ export class MySqlFuncionariosRepository implements IFuncionariosRepository {
             data: funcionario,
         });
     }
+
+    async delete(idFuncionario: number): Promise<void> {
+        await this.prisma.funcionario.delete({
+            where: {
+                idFuncionario: idFuncionario,
+            },
+        });
+    }
 }
