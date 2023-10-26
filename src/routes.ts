@@ -27,6 +27,13 @@ import { findAllOrdemServicoController } from "./useCases/ordens_servico/FindAll
 import { setOrdemServicoController } from "./useCases/ordens_servico/SetOrdemServico";
 import { delOrdemServicoController } from "./useCases/ordens_servico/DelOrdemServico";
 import { findVeiculoByClienteController } from "./useCases/veiculos/FindVeiculoByCliente";
+import { delFuncionarioController } from "./useCases/funcionarios/DelFuncionario";
+import { delServicoController } from "./useCases/servicos/DelServico";
+import { delProdutoController } from "./useCases/produtos/DelProduto";
+import { createPagamentoController } from "./useCases/Pagamentos/CreatePagamento";
+import { findPagamentoController } from "./useCases/Pagamentos/FindPagamento";
+import { findAllPagamentosController } from "./useCases/Pagamentos/FindAllPagamentos";
+import { delPagamentoController } from "./useCases/Pagamentos/DelPagamento";
 
 const router = Router();
 
@@ -120,6 +127,11 @@ router.put('/funcionario/:idFuncionario', async (request, response) => {
     return setFuncionarioController.handle(request, response);
 })
 
+// Deletar funcionário
+router.delete('/funcionario/:id', async (request, response) => {
+    return delFuncionarioController.handle(request, response);
+})
+
 // Criar novo serviço
 router.post('/servico/', async (request, response) => {
     return createServicoController.handle(request, response);
@@ -145,6 +157,11 @@ router.put('/servico/:idServico', async (request, response) => {
     return setServicoController.handle(request, response);
 })
 
+// Deleta um serviço
+router.delete('/servico/:id', async (request, response) => {
+    return delServicoController.handle(request, response);
+})
+
 // Criar novo produto
 router.post('/produto/', async (request, response) => {
     return createProdutoController.handle(request, response);
@@ -168,6 +185,11 @@ router.get('/produto/:codigoBarras', async (request, response) => {
 // Alterar dados de produto
 router.put('/produto/:codigoBarras', async (request, response) => {
     return setProdutoController.handle(request, response);
+})
+
+// Deleta um produto
+router.delete('/produto/:codigo', async (request, response) => {
+    return delProdutoController.handle(request, response);
 })
 
 // Criar nova ordem de serviço
@@ -199,5 +221,30 @@ router.put('/ordem-servico/:id', async (request, response) => {
 router.delete('/ordem-servico/:id', async (request, response) => {
     return delOrdemServicoController.handle(request, response);
 })
+
+// Criar novo pagamento
+router.post('/pagamento', async (request, response) => {
+    return createPagamentoController.handle(request, response);
+})
+
+// Busca um pagamento pelo id
+router.get('/pagamento/:id', async (request, response) => {
+    return findPagamentoController.handle(request, response);
+})
+
+// Busca todos os pagamentos
+router.get('/pagamentos/', async (request, response) => {
+    return findAllPagamentosController.handle(request, response);
+})
+
+// Busca todos os pagamentos usando filtro
+router.get('/pagamentos/:filtro', async (request, response) => {
+    return findAllPagamentosController.handle(request, response);
+})
+
+// Deleta um pagamento
+router.delete('/pagamento/:id', async (request, response) => {
+    return delPagamentoController.handle(request, response);
+});
 
 export { router }
