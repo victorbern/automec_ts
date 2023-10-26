@@ -1,13 +1,10 @@
 import { MySqlClientesRepository } from "../../../repositories/implementations/MySqlClientesRepository";
-import { MySqlVeiculosRepository } from "../../../repositories/implementations/MySqlVeiculosRepository";
-import { FindVeiculoByClienteUC } from "../../veiculos/FindVeiculoByCliente/FindVeiculoByClienteUC";
+import { findVeiculoByClienteUC } from "../../veiculos/FindVeiculoByCliente";
 import { DelClienteController } from "./DelClienteController";
 import { DelClienteUC } from "./DelClienteUC";
 
 const mySqlClientesRepository = new MySqlClientesRepository;
-const mySqlVeiculosRepository = new MySqlVeiculosRepository;
-const findVeiculoByCliente = new FindVeiculoByClienteUC(mySqlVeiculosRepository);
-const delClienteUC = new DelClienteUC(mySqlClientesRepository, findVeiculoByCliente);
+const delClienteUC = new DelClienteUC(mySqlClientesRepository, findVeiculoByClienteUC);
 
 const delClienteController = new DelClienteController(delClienteUC);
 

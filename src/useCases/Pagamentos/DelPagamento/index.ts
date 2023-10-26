@@ -4,12 +4,9 @@ import { findAllDetalhePagamentoUC } from "../../DetalhePagamento/FindAllDetalhe
 import { findOSDetalhesUC } from "../../OSDetalhes/FindOSDetalhes";
 import { findAllProdutoHasOSDetalhesUC } from "../../ProdutoHasOSDetalhes/FindAllProdutoHasOSDetalhes";
 import { delProdutoHasVendaDiretaUC } from "../../ProdutoHasVendaDireta/DelProdutoHasVendaDireta";
-import { DelProdutoHasVendaDiretaUC } from "../../ProdutoHasVendaDireta/DelProdutoHasVendaDireta/DelProdutoHasVendaDiretaUC";
 import { findAllProdutoHasVendaDiretaUC } from "../../ProdutoHasVendaDireta/FindAllProdutoHasVendaDireta";
-import { FindAllProdutoHasVendaDiretaUC } from "../../ProdutoHasVendaDireta/FindAllProdutoHasVendaDireta/FindAllProdutoHasVendaDiretaUC";
 import { delVendaDiretaUC } from "../../VendaDireta/DelVendaDireta";
 import { findVendaDiretaUC } from "../../VendaDireta/FindVendaDireta";
-import { FindVendaDiretaUC } from "../../VendaDireta/FindVendaDireta/FindVendaDiretaUC";
 import { setStatusOrdemServicoUC } from "../../ordens_servico/SetStatusOrdemServico";
 import { setEstoqueProdutoUC } from "../../produtos/SetEstoqueProduto";
 import { DelPagamentoController } from "./DelPagamentoController";

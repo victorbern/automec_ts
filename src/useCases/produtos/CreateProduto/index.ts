@@ -1,5 +1,4 @@
 import { MySqlProdutosRepository } from "../../../repositories/implementations/MySqlProdutosRepository";
-import { FindProdutoUC } from "../FindProduto/FindProdutoUC";
 import { CreateProdutoController } from "./CreateProdutoController";
 import { CreateProdutoUC } from "./CreateProdutoUC";
 

@@ -1,5 +1,4 @@
 import { MySqlServicosRepository } from "../../../repositories/implementations/MySqlServicosRepository";
-import { CreateServicoUC } from "../CreateServico/CreateServicoUC";
 import { FindServicoController } from "./FindServicoController";
 import { FindServicoUC } from "./FindServicoUC";
 
