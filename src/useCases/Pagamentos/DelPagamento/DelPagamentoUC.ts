@@ -35,6 +35,12 @@ export class DelPagamentoUC {
                 throw new AppError("Campos faltando", 400);
             }
 
+            const pagamentoExists = await this.pagamentosRepository.findById(idPagamento);
+
+            if (!pagamentoExists) {
+                throw new AppError("Pagamento não encontrado!", 400);
+            }
+
             let detalhePagamentoList = await this.findAllDetalhePagamento.execute({idPagamento});
 
             for (let i in detalhePagamentoList) {
