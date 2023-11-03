@@ -35,12 +35,18 @@ export class InMemoryOrdemServicoRepository implements IOrdemServicoRepository {
     }
 
     async findAll(): Promise<OrdemServico[]> {
-        return this.items;
+        let ordens: OrdemServico[] = [];
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].isPaga == false) {
+                ordens.push(this.items[i]);
+            }
+        }
+        return ordens;
     }
     async findByCliente(idCliente: number): Promise<OrdemServico[]> {
         let ordens: OrdemServico[] = [];
         for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].idCliente === idCliente) {
+            if (this.items[i].idCliente === idCliente && this.items[i].isPaga == false) {
                 ordens.push(this.items[i]);
             }
         }
@@ -49,7 +55,7 @@ export class InMemoryOrdemServicoRepository implements IOrdemServicoRepository {
     async findByVeiculo(placaVeiculo: string): Promise<OrdemServico[]> {
         let ordens: OrdemServico[] = [];
         for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].placaVeiculo === placaVeiculo) {
+            if (this.items[i].placaVeiculo === placaVeiculo && this.items[i].isPaga == false) {
                 ordens.push(this.items[i]);
             }
         }

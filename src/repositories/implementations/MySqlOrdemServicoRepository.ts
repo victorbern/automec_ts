@@ -29,13 +29,24 @@ export class MySqlOrdemServicoRepository implements IOrdemServicoRepository {
     }
 
     async findAll(): Promise<OrdemServico[]> {
-        const ordens: OrdemServico[] = await this.prisma.ordemServico.findMany();
+        const ordens: OrdemServico[] = await this.prisma.ordemServico.findMany({
+            where: {
+                isPaga: false,
+            },    
+        });
         return ordens;
     }
     async findByCliente(idCliente: number): Promise<OrdemServico[]> {
         const ordens: OrdemServico[] = await this.prisma.ordemServico.findMany({
             where: {
-                idCliente: idCliente,
+                AND: [
+                    {
+                        idCliente: idCliente,
+                    },
+                    {
+                        isPaga: false,
+                    }
+                ]
             },
         });
         return ordens;
@@ -43,7 +54,14 @@ export class MySqlOrdemServicoRepository implements IOrdemServicoRepository {
     async findByVeiculo(placaVeiculo: string): Promise<OrdemServico[]> {
         const ordens: OrdemServico[] = await this.prisma.ordemServico.findMany({
             where: {
-                placaVeiculo: placaVeiculo,
+                AND: [
+                    {
+                        placaVeiculo: placaVeiculo,
+                    },
+                    {
+                        isPaga: false,
+                    }
+                ]
             },
         });
 

@@ -29,6 +29,23 @@ export class MySqlPagamentosRepository implements IPagamentosRepository {
         return pagamento;
     }
 
+    async findBetweenDates(dataDe: Date, dataAte: Date): Promise<Pagamento[]> {
+        const pagamentos: Pagamento[] = await this.prisma.pagamento.findMany({
+            where: {
+                AND: [
+                    {
+                        dataHora: {
+                            gte: dataDe,
+                            lte: dataAte,
+                        },
+                    },
+                ],
+            },
+        });
+
+        return pagamentos;
+    }
+
     async delete(idPagamento: number): Promise<void> {
         await this.prisma.pagamento.delete({
             where: {

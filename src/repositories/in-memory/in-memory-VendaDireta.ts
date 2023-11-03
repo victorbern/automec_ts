@@ -35,6 +35,16 @@ export class InMemoryVendaDiretaRepository implements IVendaDiretaRepository {
         return null;
     }
 
+    async findByPagamento(idPagamento: number): Promise<VendaDireta> {
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].idPagamento === idPagamento) {
+                return this.items[i];
+            }
+        };
+
+        return null;
+    }
+
     async delete(idVendaDireta: number): Promise<void> {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].idVendaDireta == idVendaDireta) {

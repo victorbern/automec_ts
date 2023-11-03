@@ -10,13 +10,13 @@ describe("Find Venda Direta", () => {
 
     mySqlVendaDireta.items = [
         {
-            idVendaDireta: 1,
+            idVendaDireta: 9,
             idPagamento: 1,
             total: 1,
             dataHora: data,
         },
         {
-            idVendaDireta: 2,
+            idVendaDireta: 10,
             idPagamento: 2,
             total: 44,
             dataHora: data,
@@ -25,7 +25,7 @@ describe("Find Venda Direta", () => {
 
     it("should be able to find a Venda Direta", () => {
         expect(findVendaDiretaUC.execute({idPagamento: 2})).resolves.toStrictEqual({
-            idVendaDireta: 2,
+            idVendaDireta: 10,
             idPagamento: 2,
             total: 44,
             dataHora: data,

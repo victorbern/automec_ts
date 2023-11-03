@@ -11,13 +11,11 @@ export class FindVendaDiretaUC {
     async execute(data: IFindVendaDiretaRequestDTO): Promise<IFindVendaDiretaResponseDTO> {
         try {
             const idPagamento = data.idPagamento;
-
             if (!idPagamento) {
                 throw new AppError("Campos faltando", 400);
             }
 
-            const vendaDireta: VendaDireta = await this.vendaDiretaRepository.findById(data.idPagamento);
-
+            const vendaDireta: VendaDireta = await this.vendaDiretaRepository.findByPagamento(data.idPagamento);
             if (vendaDireta == null || vendaDireta == undefined) {
                 return null;
             }

@@ -19,6 +19,15 @@ export class MySqlVendaDiretaRepository implements IVendaDiretaRepository {
                 idVendaDireta: idVendaDireta,
             },
         });
+        return vendaDireta;
+    }
+
+    async findByPagamento(idPagamento: number): Promise<VendaDireta> {
+        const vendaDireta: VendaDireta = await this.prisma.vendaDireta.findFirst({
+            where: {
+                idPagamento: idPagamento,
+            },
+        });
 
         return vendaDireta;
     }

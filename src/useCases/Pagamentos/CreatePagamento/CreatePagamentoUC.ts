@@ -95,15 +95,15 @@ export class CreatePagamentoUC {
 
             if (vendaDireta) {
                 let dataHora = new Date(Date.now());
-                const total = vendaDireta.total;
+                const total = Number(vendaDireta.total);
                 let idVendaDireta = (await this.createVendaDireta.execute({idPagamento, total, dataHora})).idVendaDireta;
 
                 if (vendaDireta.produtos) {
                     for (let i in vendaDireta.produtos) {
                         const codigoBarras = vendaDireta.produtos[i].codigoBarras;
-                        const quantidadeVendida = vendaDireta.produtos[i].quantidadeVendida;
-                        const precoTotal = vendaDireta.produtos[i].precoTotal;
-                        const precoUnitario = vendaDireta.produtos[i].precoUnitario;
+                        const quantidadeVendida = Number(vendaDireta.produtos[i].quantidadeVendida);
+                        const precoTotal = Number(vendaDireta.produtos[i].precoTotal);
+                        const precoUnitario = Number(vendaDireta.produtos[i].precoUnitario);
 
                         let valorAlteracao = quantidadeVendida * -1;
                         await this.setEstoqueProduto.execute({codigoBarras, valorAlteracao})
