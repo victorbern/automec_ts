@@ -40,6 +40,10 @@ export class InMemoryPagamentosRepository implements IPagamentosRepository {
         return null;
     }
 
+    async findBetweenDates(dataDe: Date, dataAte: Date): Promise<Pagamento[]> {
+        throw new Error("Method not implemented")
+    }
+
     async delete(idPagamento: number): Promise<void> {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].idPagamento == idPagamento) {

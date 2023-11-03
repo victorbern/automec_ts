@@ -34,6 +34,7 @@ import { createPagamentoController } from "./useCases/Pagamentos/CreatePagamento
 import { findPagamentoController } from "./useCases/Pagamentos/FindPagamento";
 import { findAllPagamentosController } from "./useCases/Pagamentos/FindAllPagamentos";
 import { delPagamentoController } from "./useCases/Pagamentos/DelPagamento";
+import { getRelatorioPagamentosController } from "./useCases/relatorios/GetRelatorioPagamentos";
 
 const router = Router();
 
@@ -246,5 +247,10 @@ router.get('/pagamentos/:filtro', async (request, response) => {
 router.delete('/pagamento/:id', async (request, response) => {
     return delPagamentoController.handle(request, response);
 });
+
+// Busca o relatório de todos os pagamentos
+router.post('/relatorio/pagamentos', async (request, response) => {
+    return getRelatorioPagamentosController.handle(request, response);
+})
 
 export { router }
