@@ -32,6 +32,20 @@ export class MySqlOSDetalhesRepository implements IOSDetalhesRepository{
         return osDetalhes;
     }
 
+    async findBetweenDates(dataDe: Date, dataAte: Date): Promise<OSDetalhes[]> {
+        const osDetalhesList: OSDetalhes[] = await this.prisma.oSDetalhes.findMany({
+            where: {
+                dataOS: {
+                    gte: dataDe,
+                    lte: dataAte,
+                },
+            },
+        });
+
+
+        return osDetalhesList;
+    }
+
     async delete(idOSDetalhes: number): Promise<void> {
         await this.prisma.oSDetalhes.delete({
             where: {

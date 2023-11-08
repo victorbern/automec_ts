@@ -40,6 +40,16 @@ export class InMemoryOSDetalhesRepository implements IOSDetalhesRepository {
         return null;
     }
 
+    async findBetweenDates(dataDe: Date, dataAte: Date): Promise<OSDetalhes[]> {
+        let osDetalhesList: OSDetalhes[] = [];
+        for (let i in this.items) {
+            if (this.items[i].dataOS >= dataDe && this.items[i].dataOS <= dataAte) {
+                osDetalhesList.push(this.items[i]);
+            }
+        }
+        return osDetalhesList;
+    }
+
     async delete(idOSDetalhes: number): Promise<void> {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].idOSDetalhes == idOSDetalhes) {
