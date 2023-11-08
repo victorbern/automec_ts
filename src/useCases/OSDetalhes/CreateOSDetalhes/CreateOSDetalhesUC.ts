@@ -10,7 +10,16 @@ export class CreateOSDetalhesUC {
 
     async execute(data: ICreateOSDetalhesRequestDTO): Promise<ICreateOSDetalhesResponseDTO> {
         try {
-            const { dataOS, idOrdemServico } = data;
+            const idOrdemServico = data.idOrdemServico;
+            let dataOS = data.dataOS;
+
+            if (!idOrdemServico) {
+                throw new AppError("Campos faltando", 400);
+            }
+
+            if (!dataOS) {
+                dataOS = new Date(Date.now());
+            }
 
             const osDetalhes = new OSDetalhes({dataOS, idOrdemServico});
 
