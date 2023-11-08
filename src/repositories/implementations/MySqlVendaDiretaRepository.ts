@@ -32,6 +32,22 @@ export class MySqlVendaDiretaRepository implements IVendaDiretaRepository {
         return vendaDireta;
     }
 
+    async findBetweenDates(dataDe: Date, dataAte: Date): Promise<VendaDireta[]> {
+        const vendaDiretaList: VendaDireta[] = await this.prisma.vendaDireta.findMany({
+            where: {
+                dataHora: {
+                    gte: dataDe,
+                    lte: dataAte,
+                }
+            },
+            orderBy: {
+                dataHora: "asc",
+            }
+        });
+
+        return vendaDiretaList;
+    }
+
     async delete(idVendaDireta: number): Promise<void> {
         await this.prisma.vendaDireta.delete({
             where: {

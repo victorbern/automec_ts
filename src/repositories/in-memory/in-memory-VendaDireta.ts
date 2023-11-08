@@ -45,6 +45,17 @@ export class InMemoryVendaDiretaRepository implements IVendaDiretaRepository {
         return null;
     }
 
+    async findBetweenDates(dataDe: Date, dataAte: Date): Promise<VendaDireta[]> {
+        let vendaDiretaList: VendaDireta[] = [];
+        for (let i in this.items) {
+            if (this.items[i].dataHora >= dataDe && this.items[i].dataHora <= dataAte) {
+                vendaDiretaList.push(this.items[i]);
+            }
+        }
+
+        return vendaDiretaList;
+    }
+
     async delete(idVendaDireta: number): Promise<void> {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].idVendaDireta == idVendaDireta) {
