@@ -15,6 +15,12 @@ export class CreateProdutoHasOSDetalhesUC {
             if (!idOSDetalhes || !codigoBarras || !quantidadeVendida || !precoTotal || !precoUnitario) {
                 throw new AppError("Campos faltando", 400);
             }
+
+            const produtoHasOSDetalhesExists = await this.produtoHasOSDetalhesRepository.findUnique(idOSDetalhes, codigoBarras);
+
+            if (produtoHasOSDetalhesExists) {
+                throw new AppError("A venda já existe", 400);
+            }
             
             const produtoHasOSDetalhes = new Produto_has_OSDetalhes({idOSDetalhes, codigoBarras, quantidadeVendida, precoTotal, precoUnitario});
             await this.produtoHasOSDetalhesRepository.save(produtoHasOSDetalhes);
