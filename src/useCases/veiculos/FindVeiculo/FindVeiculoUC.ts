@@ -1,6 +1,5 @@
 import { AppError } from "../../../errors/AppError";
 import { IVeiculosRepository } from "../../../repositories/IVeiculosRepository";
-import { findClienteUC } from "../../clientes/FindCliente";
 import { FindClienteUC } from "../../clientes/FindCliente/FindClienteUC";
 import { IFindVeiculoRequestDTO, IFindVeiculoResponseDTO } from "./FindVeiculoDTO";
 

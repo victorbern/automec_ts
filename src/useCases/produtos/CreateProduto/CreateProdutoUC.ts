@@ -1,7 +1,6 @@
 import { Produto } from "../../../entities/Produto";
 import { AppError } from "../../../errors/AppError";
 import { IProdutosRepository } from "../../../repositories/IProdutosRepository";
-import { FindProdutoUC } from "../FindProduto/FindProdutoUC";
 import { ICreateProdutoRequestDTO } from "./CreateProdutoDTO";
 
 export class CreateProdutoUC {

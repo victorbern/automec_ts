@@ -25,10 +25,6 @@ import { FindExecutaFuncaoUC } from "../../ExecutaFuncao/FindExecutaFuncao/FindE
 import { CreateExecutaFuncaoUC } from "../../ExecutaFuncao/CreateExecutaFuncao/CreateExecutaFuncaoUC";
 import { SetExecutaFuncaoUC } from "../../ExecutaFuncao/SetExecutaFuncao/SetExecutaFuncaoUC";
 import { SetOrdemServicoUC } from "./SetOrdemServicoUC";
-import { clientesInMemory } from "../../../repositories/in-memory/data/clientesdata-inmemory";
-import { OrdemServico } from "../../../entities/OrdemServico";
-import { Produto_has_OSDetalhes } from "../../../entities/ProdutoHasOSDetalhes";
-import { ExecutaFuncao } from "../../../entities/ExecutaFuncao";
 
 describe("Set Ordem Serviço", () => {
     const mySqlOrdemServico = new InMemoryOrdemServicoRepository;

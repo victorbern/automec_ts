@@ -1,10 +1,7 @@
-import { DetalhePagamento } from "../../../entities/DetalhePagamento";
 import { Pagamento } from "../../../entities/Pagamento";
 import { AppError } from "../../../errors/AppError";
 import { IPagamentosRepository } from "../../../repositories/IPagamentosRepository";
 import { isNumber } from "../../../utils/UsefulFunctions";
-import { FindAllDetalhePagamentoUC } from "../../DetalhePagamento/FindAllDetalhePagamento/FindAllDetalhePagamentoUC";
-import { FindOrdemServicoUC } from "../../ordens_servico/FindOrdemServico/FindOrdemServicoUC";
 import { FindPagamentoUC } from "../FindPagamento/FindPagamentoUC";
 import { IFindAllPagamentosOrdemServico, IFindAllPagamentosRequestDTO, IFindAllPagamentosResponseDTO, IFindAllPagamentosVendaDireta } from "./FindAllPagamentosDTO";
 

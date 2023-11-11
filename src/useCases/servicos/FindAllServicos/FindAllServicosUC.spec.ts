@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryServicosRepository } from "../../../repositories/in-memory/in-memory-ServicosRepository";
 import { FindAllServicosUC } from "./FindAllServicosUC";
-import { Servico } from "../../../entities/Servico";
 
 describe("Find All Servicos", () => {
     const mySqlServicos = new InMemoryServicosRepository;

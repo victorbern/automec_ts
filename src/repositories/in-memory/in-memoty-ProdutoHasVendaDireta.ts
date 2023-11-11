@@ -1,5 +1,4 @@
 import { Produto_Has_VendaDireta } from "../../entities/ProdutoHasVendaDireta";
-import { VendaDireta } from "../../entities/VendaDireta";
 import { IProdutoHasVendaDiretaRepository } from "../IProdutoHasVendaDiretaRepository";
 
 export class InMemoryProdutoHasVendaDireta implements IProdutoHasVendaDiretaRepository {

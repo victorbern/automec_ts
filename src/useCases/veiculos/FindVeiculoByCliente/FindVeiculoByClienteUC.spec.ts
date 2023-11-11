@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryVeiculosRepository } from "../../../repositories/in-memory/in-memory-VeiculosRepository";
 import { FindVeiculoByClienteUC } from "./FindVeiculoByClienteUC";
-import { empty } from "@prisma/client/runtime";
 
 describe("Find Veiculo By Cliente", () => {
     const mySqlVeiculos = new InMemoryVeiculosRepository;

@@ -29,7 +29,6 @@ import { CreateProdutoHasVendaDiretaUC } from "../../ProdutoHasVendaDireta/Creat
 import { CreatePagamentoUC } from "./CreatePagamentoUC";
 import { DetalhePagamento } from "../../../entities/DetalhePagamento";
 import { Produto_Has_VendaDireta } from "../../../entities/ProdutoHasVendaDireta";
-import { Pagamento } from "../../../entities/Pagamento";
 
 describe("Create a payment", () => {
     const mySqlOrdemServico = new InMemoryOrdemServicoRepository;

@@ -1,4 +1,3 @@
-import { OSDetalhes } from "../../entities/OSDetalhes";
 import { Produto_has_OSDetalhes } from "../../entities/ProdutoHasOSDetalhes";
 import { IProdutoHasOSDetalhesRepository } from "../IProdutoHasOSDetalhesRepository";
 
