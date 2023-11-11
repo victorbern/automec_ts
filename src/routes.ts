@@ -35,213 +35,215 @@ import { findPagamentoController } from "./useCases/Pagamentos/FindPagamento";
 import { findAllPagamentosController } from "./useCases/Pagamentos/FindAllPagamentos";
 import { delPagamentoController } from "./useCases/Pagamentos/DelPagamento";
 import { getRelatorioPagamentosController } from "./useCases/relatorios/GetRelatorioPagamentos";
+import { getRelatorioOrdemServicoController } from "./useCases/relatorios/GetRelatorioOrdemServico";
+import { getRelatorioProdutosController } from "./useCases/relatorios/GetRelatorioProdutos";
 
 const router = Router();
 
 // Inserir novo cliente
 router.post('/cliente', async (request, response) => {
     return createClienteController.handle(request, response);
-})
+});
 
 // Buscar todos os clientes
 router.get('/clientes', async (request, response) => {
     return findAllClientesController.handle(request, response);
-})
+});
 
 // Buscar clientes usando filtro
 router.get('/clientes/:filtro', async (request, response) => {
     return findAllClientesController.handle(request, response);
-})
+});
 
 // Buscar cliente pelo id
 router.get('/cliente/:id', async (request, response) => {
     return findClienteController.handle(request, response);
-})
+});
 
 // Alterar dados de cliente
 router.put('/cliente/:id', async (request, response) => {
     return setClienteController.handle(request, response);
-})
+});
 
 // Deletar cliente
 router.delete('/cliente/:id', async (request, response) => {
     return delClienteController.handle(request, response);
-})
+});
 
 // Inserir novo veículo
 router.post('/veiculo', async (request, response) => {
     return createVeiculoController.handle(request, response);
-})
+});
 
 // Buscar todos os veículos
 router.get('/veiculos', async (request, response) => {
     return findAllVeiculosController.handle(request, response);
-})
+});
 
 // Buscar veículos usando filtro
 router.get('/veiculos/:filtro', async (request, response) => {
     return findAllVeiculosController.handle(request, response);
-})
+});
 
 // Buscar veículo pela placa
 router.get('/veiculo/:placaVeiculo', async (request, response) => {
     return findVeiculoController.handle(request, response);
-})
+});
 
 // Buscar veículos pelo cliente
 router.get('/veiculo-por-cliente/:id', async (request, response) => {
     return findVeiculoByClienteController.handle(request, response);
-})
+});
 
 // Alterar dados de veículo
 router.put('/veiculo/:placaVeiculo', async (request, response) => {
     return setVeiculoController.handle(request, response);
-})
+});
 
 // Deletar veículo
 router.delete('/veiculo/:placaVeiculo', async (request, response) => {
     return delVeiculoController.handle(request, response);
-})
+});
 
 // Criar novo funcionário
 router.post('/funcionario', async (request, response) => {
     return createFuncionarioController.handle(request, response);
-})
+});
 
 // Buscar todos os funcionários
 router.get('/funcionarios', async (request, response) => {
     return findAllFuncionariosController.handle(request, response);
-})
+});
 
 // Buscar funcionários usando filtro
 router.get('/funcionarios/:filtro', async (request, response) => {
     return findAllFuncionariosController.handle(request, response);
-})
+});
 
 // Buscar funcionário pelo id
 router.get('/funcionario/:idFuncionario', async (request, response) => {
     return findFuncionarioController.handle(request, response);
-})
+});
 
 // Alterar dados de funcionário
 router.put('/funcionario/:idFuncionario', async (request, response) => {
     return setFuncionarioController.handle(request, response);
-})
+});
 
 // Deletar funcionário
 router.delete('/funcionario/:id', async (request, response) => {
     return delFuncionarioController.handle(request, response);
-})
+});
 
 // Criar novo serviço
 router.post('/servico/', async (request, response) => {
     return createServicoController.handle(request, response);
-})
+});
 
 // Buscar todos os serviços
 router.get('/servicos/', async (request, response) => {
     return findAllServicosController.handle(request, response);
-})
+});
 
 // Buscar serviços usando filtro
 router.get('/servicos/:filtro', async (request, response) => {
     return findAllServicosController.handle(request, response);
-})
+});
 
 // Buscar serviço pelo id
 router.get('/servico/:idServico', async (request, response) => {
     return findServicoController.handle(request, response);
-})
+});
 
 // Alterar dados de serviço
 router.put('/servico/:idServico', async (request, response) => {
     return setServicoController.handle(request, response);
-})
+});
 
 // Deleta um serviço
 router.delete('/servico/:id', async (request, response) => {
     return delServicoController.handle(request, response);
-})
+});
 
 // Criar novo produto
 router.post('/produto/', async (request, response) => {
     return createProdutoController.handle(request, response);
-})
+});
 
 // Buscar todos os produtos
 router.get('/produtos/', async (request, response) => {
     return findAllProdutosController.handle(request, response);
-})
+});
 
 // Buscar produtos usando filtro
 router.get('/produtos/:filtro', async (request, response) => {
     return findAllProdutosController.handle(request, response);
-})
+});
 
 // Buscar produto pelo código de barras
 router.get('/produto/:codigoBarras', async (request, response) => {
     return findProdutoController.handle(request, response);
-})
+});
 
 // Alterar dados de produto
 router.put('/produto/:codigoBarras', async (request, response) => {
     return setProdutoController.handle(request, response);
-})
+});
 
 // Deleta um produto
 router.delete('/produto/:codigo', async (request, response) => {
     return delProdutoController.handle(request, response);
-})
+});
 
 // Criar nova ordem de serviço
 router.post('/ordem-servico/', async (request, response) => {
     return createOrdemServicoController.handle(request, response);
-})
+});
 
 // Busca uma ordem de serviço pelo id
 router.get('/ordem-servico/:id', async (request, response) => {
     return findOrdemServicoController.handle(request, response);
-})
+});
 
 // Busca todas as ordens de serviço
 router.get('/ordens-servico/', async (request, response) => {
     return findAllOrdemServicoController.handle(request, response);
-})
+});
 
 // Busca ordens de serviço usando filtro
 router.get('/ordens-servico/:filtro', async (request, response) => {
     return findAllOrdemServicoController.handle(request, response);
-})
+});
 
 // Alterar dados de ordem de serviço
 router.put('/ordem-servico/:id', async (request, response) => {
     return setOrdemServicoController.handle(request, response);
-})
+});
 
 // Deletar uma ordem de serviço pelo id
 router.delete('/ordem-servico/:id', async (request, response) => {
     return delOrdemServicoController.handle(request, response);
-})
+});
 
 // Criar novo pagamento
 router.post('/pagamento', async (request, response) => {
     return createPagamentoController.handle(request, response);
-})
+});
 
 // Busca um pagamento pelo id
 router.get('/pagamento/:id', async (request, response) => {
     return findPagamentoController.handle(request, response);
-})
+});
 
 // Busca todos os pagamentos
 router.get('/pagamentos/', async (request, response) => {
     return findAllPagamentosController.handle(request, response);
-})
+});
 
 // Busca todos os pagamentos usando filtro
 router.get('/pagamentos/:filtro', async (request, response) => {
     return findAllPagamentosController.handle(request, response);
-})
+});
 
 // Deleta um pagamento
 router.delete('/pagamento/:id', async (request, response) => {
@@ -251,6 +253,16 @@ router.delete('/pagamento/:id', async (request, response) => {
 // Busca o relatório de todos os pagamentos
 router.post('/relatorio/pagamentos', async (request, response) => {
     return getRelatorioPagamentosController.handle(request, response);
-})
+});
+
+// Busca o relatório de todas as ordens de serviço
+router.post('/relatorio/ordens-servico', async (request, response) => {
+    return getRelatorioOrdemServicoController.handle(request, response);
+});
+
+// Busca o relatório de todos os produtos
+router.post('/relatorio/produtos', async (request, response) => {
+    return getRelatorioProdutosController.handle(request, response);
+});
 
 export { router }
