@@ -26,18 +26,30 @@ Insira os tópicos do README em links para facilitar a navegação do leitor
 ## Descrição do projeto 
 
 <p align="justify">
-  Descrição breve do projeto compondo um paragrafo ou dois. 
+  Sistema de gerenciamento de uma oficina mecânica especializada em troca de óleo. Aplicação que permite a manipulação de clientes, veiculos, servicos, produtos, ordens de serviço, pagamentos e relatórios.
 </p>
 
 ## Funcionalidades
 
-:heavy_check_mark: Funcionalidade 1  
+:heavy_check_mark: Criar, buscar, editar e remover clientes.
 
-:heavy_check_mark: Funcionalidade 2  
+:heavy_check_mark: Criar, buscar, editar e remover veículos.  
 
-:heavy_check_mark: Funcionalidade 3  
+:heavy_check_mark: Criar, buscar, editar e alterar o estoque de produtos.
 
-:heavy_check_mark: Funcionalidade 4  
+:heavy_check_mark: Criar, buscar e editar funcionários.
+
+:heavy_check_mark: Criar, buscar e editar serviços.
+
+:heavy_check_mark: Criar, buscar, editar e remover ordens de serviço.
+
+:heavy_check_mark: Criar, buscar e cancelar pagamentos.
+
+:heavy_check_mark: Gerar relatórios de pagamentos criados em um período.
+
+:heavy_check_mark: Gerar relatórios de ordens de serviço com base no tipo de pagamento em um período.
+
+:heavy_check_mark: Gerar relatório de produtos com base na quantidade vendida em um periodo.
 
 ## Layout ou Deploy da Aplicação :dash:
 
@@ -131,4 +143,4 @@ Liste o time responsável pelo desenvolvimento do projeto
 
 The [MIT License]() (MIT)
 
-Copyright :copyright: Ano - Titulo do Projeto
+Copyright :copyright: 2023 - Automec
