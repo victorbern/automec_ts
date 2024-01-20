@@ -51,21 +51,11 @@ Insira os tópicos do README em links para facilitar a navegação do leitor
 
 :heavy_check_mark: Gerar relatório de produtos com base na quantidade vendida em um periodo.
 
-## Layout ou Deploy da Aplicação :dash:
-
-> Link do deploy da aplicação. Exemplo com netlify: https://certificates-for-everyone-womakerscode.netlify.app/
-
-... 
-
 Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
 
 ## Pré-requisitos
 
-:warning: [Node](https://nodejs.org/en/download/)
-
-...
-
-Liste todas as dependencias e libs que o usuário deve ter instalado na máquina antes de rodar a aplicação 
+:warning: [Docker](https://www.docker.com/products/docker-desktop/)
 
 ## Como rodar a aplicação :arrow_forward:
 
