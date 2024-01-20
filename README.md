@@ -55,7 +55,7 @@ Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
 
 ## Pré-requisitos
 
-:warning: [Docker](https://www.docker.com/products/docker-desktop/)
+:warning: [Docker](https://www.docker.com/products/docker-desktop/) ou :warning: [Node](https://nodejs.org/en)
 
 ## Como rodar a aplicação :arrow_forward:
 
@@ -75,6 +75,22 @@ docker compose up
 Pronto, agora o docker irá baixar a imagem do front-end, do mysql, do nginx e do adminer e irá criar uma imagem nova a partir do código do projeto.
 Logo após tudo carregar, o sistema ficará disponível para uso em https://localhost:3050
 ... 
+
+## Caso deseje rodar localmente sem docker:
+
+No terminal, clone o projeto: 
+
+```
+git clone https://github.com/victorbern/automec_ts.git
+```
+Após clonar o projeto, acesse a pasta:
+```
+cd automec_ts
+```
+Rode o seguinte código no terminal:
+```
+npm start
+```
 
 ## Como rodar os testes
 
