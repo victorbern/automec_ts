@@ -62,19 +62,26 @@ Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
 No terminal, clone o projeto: 
 
 ```
-git clone https://github.com/React-Bootcamp-WoMarkersCode/certificate-generator
+git clone https://github.com/victorbern/automec_ts.git
 ```
-
+Após clonar o projeto, acesse a pasta:
+```
+cd automec_ts
+```
+Rode o seguinte código no terminal:
+```
+docker compose up
+```
+Pronto, agora o docker irá baixar a imagem do front-end, do mysql, do nginx e do adminer e irá criar uma imagem nova a partir do código do projeto.
+Logo após tudo carregar, o sistema ficará disponível para uso em https://localhost:3050
 ... 
-
-Coloque um passo a passo para rodar a sua aplicação. **Dica: clone o próprio projeto e verfique se o passo a passo funciona**
 
 ## Como rodar os testes
 
-Coloque um passo a passo para executar os testes
+Para rodar os testes, com o terminal aberto rode:
 
 ```
-$ npm test, rspec, etc 
+$ npm test
 ```
 
 ## Casos de Uso
@@ -95,10 +102,6 @@ Exemplo: Caso a sua aplicação tenha alguma funcionalidade de login apresente n
 
 Se quiser, coloque uma amostra do banco de dados 
 
-## Iniciando/Configurando banco de dados
-
-Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados 
-
 ## Linguagens, dependencias e libs utilizadas :books:
 
 - [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
@@ -107,10 +110,6 @@ Se for necessário configurar algo antes de iniciar o banco de dados insira os c
 ...
 
 Liste as tecnologias utilizadas no projeto que **não** forem reconhecidas pelo Github 
-
-## Resolvendo Problemas :exclamation:
-
-Em [issues]() foram abertos alguns problemas gerados durante o desenvolvimento desse projeto e como foram resolvidos. 
 
 ## Tarefas em aberto
 
@@ -123,11 +122,6 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 :memo: Tarefa 3 
 
 ## Desenvolvedores/Contribuintes :octocat:
-
-Liste o time responsável pelo desenvolvimento do projeto
-
-| [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Diana Regina</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Diana Regina</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Diana Regina</sub>](https://github.com/Diana-ops) |
-| :---: | :---: | :---: 
 
 ## Licença 
 
