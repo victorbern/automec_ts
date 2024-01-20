@@ -1,0 +1,1406 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Automec API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/cliente": {
+      "post": {
+        "description": "Criar cliente",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeCliente": {
+                  "example": "Victor Oliveira"
+                },
+                "cpfCnpj": {
+                  "example": "465.165.489-52"
+                },
+                "celularCliente": {
+                  "example": "11953659865"
+                },
+                "telefoneCliente": {
+                  "example": "1140365960"
+                },
+                "cep": {
+                  "example": "12970-000"
+                },
+                "endereco": {
+                  "example": "Rua 1"
+                },
+                "numero": {
+                  "example": "44"
+                },
+                "bairro": {
+                  "example": "Centro"
+                },
+                "cidade": {
+                  "example": "São Paulo"
+                },
+                "uf": {
+                  "example": "SP"
+                },
+                "complemento": {
+                  "example": "Apartamento 24"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "O CPF/CNPJ já foi cadastrado"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/clientes": {
+      "get": {
+        "description": "Buscar todos os clientes",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/clientes/{filtro}": {
+      "get": {
+        "description": "Buscar todos os clientes com base em um filtro (filtra por nomeCliente e cpfCnpj)",
+        "parameters": [
+          {
+            "name": "filtro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/cliente/{id}": {
+      "get": {
+        "description": "Buscar um cliente específico com base no idCliente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      },
+      "put": {
+        "description": "Alterar dados de um cliente com base no seu id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeCliente": {
+                  "example": "Victor Bernardo"
+                },
+                "cpfCnpj": {
+                  "example": "465.165.489-52"
+                },
+                "celularCliente": {
+                  "example": "11953659865"
+                },
+                "telefoneCliente": {
+                  "example": "1140365960"
+                },
+                "cep": {
+                  "example": "12970-000"
+                },
+                "endereco": {
+                  "example": "Rua 1"
+                },
+                "numero": {
+                  "example": "44"
+                },
+                "bairro": {
+                  "example": "Centro"
+                },
+                "cidade": {
+                  "example": "São Paulo"
+                },
+                "uf": {
+                  "example": "SP"
+                },
+                "complemento": {
+                  "example": "Apartamento 24"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "Cliente não encontrado"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deleta um cliente com base no idCliente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Cliente não encontrado"
+          },
+          "400": {
+            "description": "O cliente tem veículos em seu nome"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/veiculo": {
+      "post": {
+        "description": "Criar um veículo",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "placaVeiculo": {
+                  "example": "FPT-4304"
+                },
+                "ano": {
+                  "example": "2008"
+                },
+                "capacidadeOleo": {
+                  "example": "3"
+                },
+                "idCliente": {
+                  "example": "1"
+                },
+                "marca": {
+                  "example": "Fiat"
+                },
+                "modelo": {
+                  "example": "Uno"
+                },
+                "cor": {
+                  "example": "Preto"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "A placa já foi cadastrada"
+          },
+          "400": {
+            "description": "O cliente não foi encontrado"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/veiculos": {
+      "get": {
+        "description": "Buscar todos os veículos",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/veiculos/{filtro}": {
+      "get": {
+        "description": "Buscar todos os veículos com base em um filtro (filtra por placaVeiculo, marca, modelo)",
+        "parameters": [
+          {
+            "name": "filtro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/veiculo/{placaVeiculo}": {
+      "get": {
+        "description": "Busca um veículo específico com base na placa",
+        "parameters": [
+          {
+            "name": "placaVeiculo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      },
+      "put": {
+        "description": "Alterar dados de um veículo com base na placaVeiculo",
+        "parameters": [
+          {
+            "name": "placaVeiculo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ano": {
+                  "example": "2009"
+                },
+                "capacidadeOleo": {
+                  "example": "3"
+                },
+                "idCliente": {
+                  "example": "1"
+                },
+                "marca": {
+                  "example": "Fiat"
+                },
+                "modelo": {
+                  "example": "Uno"
+                },
+                "cor": {
+                  "example": "Preto"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "Veículo não encontrado"
+          },
+          "400": {
+            "description": "Cliente não encontrado"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deleta um veículo com base na placaVeiculo",
+        "parameters": [
+          {
+            "name": "placaVeiculo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "O veículo não foi encontrado"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/veiculo-por-cliente/{id}": {
+      "get": {
+        "description": "Busca todos os veículos com base em um idCliente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/funcionario": {
+      "post": {
+        "description": "Criar um funcionário",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeFuncionario": {
+                  "example": "Fernando Santos"
+                },
+                "isAtivo": {
+                  "example": "true"
+                },
+                "funcao": {
+                  "example": "Mecânico"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "O campo 'isAtivo' deve ser 'Sim' ou 'Não'"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/funcionarios": {
+      "get": {
+        "description": "Buscar todos os funcionários",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/funcionarios/{filtro}": {
+      "get": {
+        "description": "Buscar todos os funcionários com base em um filtro (filtra baseado no nomeFuncionario e na função)",
+        "parameters": [
+          {
+            "name": "filtro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/funcionario/{idFuncionario}": {
+      "get": {
+        "description": "Busca um funcionário específico com base no idFuncionario",
+        "parameters": [
+          {
+            "name": "idFuncionario",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      },
+      "put": {
+        "description": "Altera dados de um funcionário com base no idFuncionario",
+        "parameters": [
+          {
+            "name": "idFuncionario",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeFuncionario": {
+                  "example": "Fernando Santos"
+                },
+                "isAtivo": {
+                  "example": "true"
+                },
+                "funcao": {
+                  "example": "Atendente"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/funcionario/{id}": {
+      "delete": {
+        "description": "Busca os dados de um funcionário com base no idFuncionario",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/servico/": {
+      "post": {
+        "description": "Criar serviço",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "descricaoServico": {
+                  "example": "any"
+                },
+                "precoServico": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/servicos/": {
+      "get": {
+        "description": "Buscar todos os serviços",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/servicos/{filtro}": {
+      "get": {
+        "description": "Buscar os serviços com base em um filtro (filtra por descricaoServico)",
+        "parameters": [
+          {
+            "name": "filtro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/servico/{idServico}": {
+      "get": {
+        "description": "Busca um serviço específico com base no idServico",
+        "parameters": [
+          {
+            "name": "idServico",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      },
+      "put": {
+        "description": "Altera os dados de um serviço com base no idServico",
+        "parameters": [
+          {
+            "name": "idServico",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "Serviço não encontrado"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/servico/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/produto/": {
+      "post": {
+        "description": "Criar um novo produto",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "codigoBarras": {
+                  "example": "1213213"
+                },
+                "descricao": {
+                  "example": "Óleo Lubrificante"
+                },
+                "valorCusto": {
+                  "example": "20"
+                },
+                "quantidadeEstoque": {
+                  "example": "50"
+                },
+                "precoVenda": {
+                  "example": "25"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/produtos/": {
+      "get": {
+        "description": "Buscar todos os produtos",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/produtos/{filtro}": {
+      "get": {
+        "description": "Busca os produtos com base em um filtro (filtra com base na descricao e no codigoBarras)",
+        "parameters": [
+          {
+            "name": "filtro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      }
+    },
+    "/produto/{codigoBarras}": {
+      "get": {
+        "description": "Busca um produto específico com base no codigoBarras",
+        "parameters": [
+          {
+            "name": "codigoBarras",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected error!"
+          }
+        }
+      },
+      "put": {
+        "description": "Altera dados de um produto com base no codigoBarras",
+        "parameters": [
+          {
+            "name": "codigoBarras",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "descricao": {
+                  "example": "Óleo"
+                },
+                "valorCusto": {
+                  "example": "20"
+                },
+                "quantidadeEstoque": {
+                  "example": "50"
+                },
+                "precoVenda": {
+                  "example": "25"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "Produto não encontrado"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/produto/{codigo}": {
+      "delete": {
+        "description": "Busca um produto específico com base no código de barras",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "Produto não encontrado"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/ordem-servico/": {
+      "post": {
+        "description": "Criar uma ordem de serviço",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idCliente": {
+                  "example": "2"
+                },
+                "placaVeiculo": {
+                  "example": "ASD-2112"
+                },
+                "total": {
+                  "example": "2000"
+                },
+                "km": {
+                  "example": "1000"
+                },
+                "produtos": {
+                  "example": [
+                    {
+                      "codigoBarras": "1213213",
+                      "quantidadeVendida": 12,
+                      "precoTotal": 120,
+                      "precoUnitario": 10
+                    }
+                  ]
+                },
+                "servicos": {
+                  "example": [
+                    {
+                      "idServico": 2,
+                      "idFuncionario": 3,
+                      "observacao": "Troca de Óleo"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "O cliente não foi encontrado"
+          },
+          "400": {
+            "description": "O veículo não foi encontrado"
+          },
+          "400": {
+            "description": "Um dos campos na posição i é nulo"
+          },
+          "400": {
+            "description": "O produto não foi encontrado"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/ordem-servico/{id}": {
+      "get": {
+        "description": "Busca uma ordem de serviço específica com base no id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campo id faltante"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Alterar dados de uma ordem de serviço com base no seu id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idCliente": {
+                  "example": "1"
+                },
+                "placaVeiculo": {
+                  "example": "ASD-1231"
+                },
+                "total": {
+                  "example": "2000"
+                },
+                "km": {
+                  "example": "1000"
+                },
+                "produtos": {
+                  "example": [
+                    {
+                      "codigoBarras": "1213213",
+                      "quantidadeVendida": 10,
+                      "precoTotal": 200,
+                      "precoUnitario": 20
+                    },
+                    {
+                      "codigoBarras": "1232432",
+                      "quantidadeVendida": 2,
+                      "precoTotal": 40,
+                      "precoUnitario": 20
+                    }
+                  ]
+                },
+                "servicos": {
+                  "example": [
+                    {
+                      "idServico": 2,
+                      "idFuncionario": 1,
+                      "precoUnitario": 50
+                    },
+                    {
+                      "idServico": 3,
+                      "idFuncionario": 1,
+                      "precoUnitario": 100
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "A Ordem de Serviço não foi encontrada"
+          },
+          "400": {
+            "description": "Não é possível alterar dados de uma ordem de serviço paga/finalizada"
+          },
+          "400": {
+            "description": "O cliente não foi encontrado"
+          },
+          "400": {
+            "description": "O veículo não foi encontrado"
+          },
+          "400": {
+            "description": "Um dos campos na posição i é nulo"
+          },
+          "400": {
+            "description": "O produto não foi encontrado"
+          },
+          "400": {
+            "description": "O serviço não foi encontrado"
+          },
+          "400": {
+            "description": "O funcionário não foi encontrado"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deleta uma ordem de serviço com base no id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "Ordem de Serviço não encontrada!"
+          },
+          "400": {
+            "description": "Não é possível deletar uma ordem de serviço paga/finalizada"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/ordens-servico/": {
+      "get": {
+        "description": "Busca todas as ordens de serviços",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/ordens-servico/{filtro}": {
+      "get": {
+        "description": "Buscar todas as ordens de serviço com base em um filtro (filtra por cliente, veiculo e id)",
+        "parameters": [
+          {
+            "name": "filtro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/pagamento": {
+      "post": {
+        "description": "Criar um novo pagamento",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subtotal": {
+                  "example": "2000"
+                },
+                "total": {
+                  "example": "2100"
+                },
+                "formaPagamento": {
+                  "example": "Cartão de Crédito"
+                },
+                "desconto": {
+                  "example": "100"
+                },
+                "ordensServico": {
+                  "example": [
+                    {
+                      "idOrdemServico": "1"
+                    },
+                    {
+                      "idOrdemServico": "2"
+                    }
+                  ]
+                },
+                "vendaDireta": {
+                  "example": {
+                    "total": 2000,
+                    "produtos": [
+                      {
+                        "codigoBarras": "1231242",
+                        "quantidadeVendida": 6,
+                        "precoUnitario": 10,
+                        "precoTotal": 60
+                      },
+                      {
+                        "codigoBarras": "1223345",
+                        "quantidadeVendida": 3,
+                        "precoUnitario": 11,
+                        "precoTotal": 33
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "A ordem de serviço na posição i não foi encontrada"
+          },
+          "400": {
+            "description": "A ordem de serviço na posição i já foi paga"
+          },
+          "400": {
+            "description": "O produto com o código de barras x não foi encontrada"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/pagamento/{id}": {
+      "get": {
+        "description": "Buscar um pagamento com base no id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deleta um pagamento com base no id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "400": {
+            "description": "Pagamento não encontrado!"
+          }, 
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/pagamentos/": {
+      "get": {
+        "description": "Buscar todos os pagamentos",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Não foram encontrados pagamentos"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/pagamentos/{filtro}": {
+      "get": {
+        "description": "Buscar todos os pagamentos com base em um filtro (filtra pelo id)",
+        "parameters": [
+          {
+            "name": "filtro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/relatorio/pagamentos": {
+      "post": {
+        "description": "Gera um relatório de pagamentos com base em um intervalo de datas",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dataDe": {
+                  "example": "2023-11-01"
+                },
+                "dataAte": {
+                  "example": "2023-11-30"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/relatorio/ordens-servico": {
+      "post": {
+        "description": "Gera um relatório de ordens de serviço com base em um intervalo de datas",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dataDe": {
+                  "example": "2023-11-01"
+                },
+                "dataAte": {
+                  "example": "2023-11-30"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    },
+    "/relatorio/produtos": {
+      "post": {
+        "description": "Gera um relatório de produtos com base em um intervalo de datas",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dataDe": {
+                  "example": "2023-11-01"
+                },
+                "dataAte": {
+                  "example": "2023-11-30"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Campos faltando"
+          },
+          "500": {
+            "description": "Unexpected Error"
+          }
+        }
+      }
+    }
+  }
+}

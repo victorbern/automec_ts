@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryFuncionariosRepository } from "../../../repositories/in-memory/in-memory-FuncionariosRepository";
 import { FindAllFuncionariosUC } from "./FindAllFuncionariosUC";
-import { Funcionario } from "@prisma/client";
 
 describe("Find All Funcionarios", () => {
     const mySqlFuncionarios = new InMemoryFuncionariosRepository;

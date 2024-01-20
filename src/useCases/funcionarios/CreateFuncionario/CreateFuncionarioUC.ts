@@ -14,8 +14,8 @@ export class CreateFuncionarioUC {
                 throw new AppError('Campos faltando', 400)
             }
 
-            if (data.isAtivo !== "sim" && data.isAtivo !== "nao"){
-                throw new AppError(`O campo 'isAtivo' deve ser 'sim' ou 'nao'`, 400)
+            if (data.isAtivo !== "Sim" && data.isAtivo !== "Não"){
+                throw new AppError(`O campo 'isAtivo' deve ser 'Sim' ou 'Não'`, 400)
             }
             const funcionario = new Funcionario(data);
             await this.funcionariosRepository.save(funcionario);
