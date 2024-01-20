@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:@localhost:3306/automec_v7"
+  url      = "mysql://root:automec@db/automec_bd"
 }
 
 model Cliente {
