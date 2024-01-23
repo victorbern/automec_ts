@@ -89,7 +89,7 @@ cd automec_ts
 ```
 Rode o seguinte código no terminal:
 ```
-npm start
+npm run dev
 ```
 
 ## Como rodar os testes
