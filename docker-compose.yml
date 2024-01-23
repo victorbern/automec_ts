@@ -1,0 +1,68 @@
+version: "3.4"
+services:
+  db:
+    image: mysql:8.0.35
+    restart: always
+    volumes:
+      - mysql:/home/node/app/dados
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: automec
+      MYSQL_DATABASE: automec-bd
+      MYSQL_USER: automec
+      MYSQL_PASSWORD: automec123
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 20s
+      timeout: 30s
+      retries: 5
+      start_period: 1s
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    networks:
+      - net
+
+  api:
+    build: 
+      context: .
+      target: production
+    volumes:
+      - apidata:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - 3000:3000
+    command: sh -cx "npm run generate && node dist/src/server.js"
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - net
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - net
+
+  nginx:
+    depends_on:
+      - api
+    build: ./app-front
+    image: victorbrnrd/automec-ts:app-nginx
+    restart: always
+    ports:
+      - "3050:3050"
+    networks:
+      - net
+
+volumes:
+  apidata:
+  mysql:
+
+networks:
+  net:
+    driver: 
+      bridge
