@@ -97,7 +97,7 @@ Para rodar os testes, com o terminal aberto rode:
 ```
 $ npm test
 ```
-
+<!-- 
 ## Casos de Uso
 
 
@@ -106,7 +106,7 @@ $ npm test
 ## Linguagens, dependencias e libs utilizadas :books:
 
 ## Tarefas em aberto
-<!--
+
 Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementadas na sua aplicação
 
 :memo: Tarefa 1 
@@ -115,8 +115,10 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 
 :memo: Tarefa 3 
 
--->
+
 ## Desenvolvedores/Contribuintes :octocat:
+
+-->
 
 ## Licença 
 
